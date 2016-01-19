@@ -11,6 +11,9 @@
 public protocol NativeContextType: class {
     
     var renderingAPI: RenderingAPI { get }
+    
+    /// Request the native window system display the OpenGL ES renderbuffer bound to `target`.
+    func presentRenderbuffer(target: Int) -> Bool
 }
 
 // MARK: - Darwin Support
