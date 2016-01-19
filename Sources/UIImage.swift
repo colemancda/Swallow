@@ -12,7 +12,10 @@
 
     public extension Context {
         
-        func drawToImage(region: Rectangle)
+        func drawToImage(region: Rectangle? = nil) {
+            
+            
+        }
     }
     
 #endif
