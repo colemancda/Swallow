@@ -90,7 +90,13 @@ public struct Rectangle {
         return Rectangle(x: left, y: top, width: right - left, height: bottom - top)
     }
     
-    public func 
+    public func boundsAfterTransformation(matrix: Matrix) -> Rectangle {
+        
+        for i in 0 ..< 4 {
+            
+            let point = 
+        }
+    }
 }
 
 // MARK: - Darwin Support
