@@ -15,9 +15,9 @@ public struct Vector2 {
     
     // MARK: - Initialization
     
-    public init(_ value: (Float, Float)) {
+    public init(_ x: Float, _ y: Float) {
         
-        self.value = value
+        self.value = (x, y)
     }
     
     // MARK: - Accessors

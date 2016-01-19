@@ -92,11 +92,34 @@ public struct Rectangle: Equatable {
     
     public func boundsAfterTransformation(matrix: Matrix) -> Rectangle {
         
+        var minX = FLT_MAX
+        var minY = FLT_MAX
+        var maxX = FLT_MIN
+        var maxY = FLT_MIN
+        
         for i in 0 ..< 4 {
             
-            let transformedPoint = matrix.tranform(Point(x: width * positions, y: <#T##Float#>))
+            let transformedPoint = matrix.tranform(Point(x: width * positions[i].x, y: height * positions[i].y))
+            
+            if (minX > transformedPoint.x) { minX = transformedPoint.x }
+            if (maxX < transformedPoint.x) { maxX = transformedPoint.x }
+            if (minY > transformedPoint.y) { minY = transformedPoint.y }
+            if (maxY < transformedPoint.y) { maxY = transformedPoint.y }
         }
+        
+        return Rectangle(x: minX, y: minY, width: maxX - minX, height:  maxY - minY)
     }
+    
+    public mutating func inflate(dx: Float, dy: Float) {
+        
+        x -= dx
+        width += 2 * dx
+        
+        y -= dy
+        height += 2 * dy
+    }
+    
+    
 }
 
 // MARK: - Equatable
@@ -105,6 +128,15 @@ public func == (lhs: Rectangle, rhs: Rectangle) -> Bool {
     
     
 }
+
+// MARK: - Private Constants
+
+private let positions = [
+    Vector2(0, 0),
+    Vector2(1, 0),
+    Vector2(0, 1),
+    Vector2(1, 1)
+]
 
 // MARK: - Darwin Support
 

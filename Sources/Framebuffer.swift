@@ -45,6 +45,13 @@ internal final class Framebuffer {
     
     private var needsFinish = false
     
+    // MARK: - Initializer
+    
+    internal init() {
+        
+        
+    }
+    
     // MARK: - Methods
     
     func present() -> Bool {
