@@ -48,6 +48,18 @@ public struct Rectangle {
         let rWidth = rectangle.width
         let rHeight = rectangle.height
         
+        return rX >= self.x
+            && rX + rWidth <= self.x + self.width
+            && rY >= self.y && rY + rHeight <= self.y + self.height
+    }
+    
+    public func intersects(rectangle: Rectangle) -> Bool {
+        
+        let rX = rectangle.x
+        let rY = rectangle.y
+        let rWidth = rectangle.width
+        let rHeight = rectangle.height
+        
         let outside = (rX <= self.x && rX + rWidth <= self.x)
             || (rX >= self.x + self.width && rX + rWidth >= self.x + self.width)
             || (rY <= self.y && rY + rHeight <= self.y)
@@ -56,22 +68,29 @@ public struct Rectangle {
         return !outside
     }
     
-    public func intersection(rectangle: Rectangle) -> Rectangle {
+    public func intersection(rectangle: Rectangle) -> Rectangle? {
         
         let left    = max(x, rectangle.x)
         let right   = min(x + width, rectangle.x + rectangle.width)
         let top     = max(y, rectangle.y)
         let bottom  = min(y + height, rectangle.y + rectangle.height)
         
-        if left > right || top > bottom {
-            
-            return Rectangle()
-        }
-        else {
-            
-            return Rectangle(x: left, y: top, width: right - left, height: bottom - top)
-        }
+        guard (left > right || top > bottom) == false else { return nil }
+        
+        return Rectangle(x: left, y: top, width: right - left, height: bottom - top)
     }
+    
+    public func unite(rectangle: Rectangle) -> Rectangle {
+        
+        let left    = min(x, rectangle.x)
+        let right   = max(x + width, rectangle.x + rectangle.width)
+        let top     = min(y, rectangle.y)
+        let bottom  = max(y + height, rectangle.y + rectangle.height)
+        
+        return Rectangle(x: left, y: top, width: right - left, height: bottom - top)
+    }
+    
+    public func 
 }
 
 // MARK: - Darwin Support
