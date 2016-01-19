@@ -50,7 +50,7 @@ internal final class Framebuffer {
     func present() -> Bool {
         
         // TODO: Implement -present:
-        
+        /*
         self.resolve()
         self.discard()
         
@@ -62,7 +62,7 @@ internal final class Framebuffer {
         }
         
         glBindRenderbuffer(GLenum(GL_RENDERBUFFER), _colorRenderBuffer)
-        
+        */
         return context.nativeContext.presentRenderbuffer(Int(GL_RENDERBUFFER))
     }
 }
