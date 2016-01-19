@@ -45,15 +45,10 @@ public struct Matrix {
         self.init(a: scale.x, b: 0, c: 0, d: scale.y, translation: (0, 0))
     }
     
-    public init(translation: (x: Float, y: Float)) {
-        
-        self.init(a: 1, b: 0, c: 0, d: 1, tx: translation: translation)
-    }
-    
     // MARK: - Methods
     
     func tranform(point: Point) -> Point {
         
-        return Point(x: a * point.x + c * point.y + tx, y: b * point.x + d * point.y + ty)
+        return Point(x: a * point.x + c * point.y + translation.x, y: b * point.x + d * point.y + translation.y)
     }
 }

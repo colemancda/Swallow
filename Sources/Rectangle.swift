@@ -7,7 +7,7 @@
 //
 
 /// Describes a rectangle by its top-left corner point (x, y) and by its width and height.
-public struct Rectangle {
+public struct Rectangle: Equatable {
     
     // MARK: - Properties
     
@@ -94,9 +94,16 @@ public struct Rectangle {
         
         for i in 0 ..< 4 {
             
-            let point = 
+            let transformedPoint = matrix.tranform(Point(x: width * positions, y: <#T##Float#>))
         }
     }
+}
+
+// MARK: - Equatable
+
+public func == (lhs: Rectangle, rhs: Rectangle) -> Bool {
+    
+    
 }
 
 // MARK: - Darwin Support
