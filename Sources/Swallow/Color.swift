@@ -20,11 +20,11 @@ public struct Color: Equatable {
         self.value = value
     }
     
-    public init(a: UInt8? = nil, r: UInt8, g: UInt8, b: UInt8) {
+    public init(alpha: UInt8? = nil, red: UInt8, green: UInt8, blue: UInt8) {
         
-        let rgbValue: CInt = (CInt(r) << 16) | (CInt(g) << 8) | CInt(b)
+        let rgbValue: CInt = (CInt(red) << 16) | (CInt(green) << 8) | CInt(blue)
         
-        if let alpha = a {
+        if let alpha = alpha {
             
             let argbValue = (CInt(alpha) << 24) | rgbValue
             
