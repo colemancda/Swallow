@@ -46,6 +46,16 @@ public struct VertexData {
         }
     }
     
+    public var tinted: Bool {
+        
+        for vertex in vertices {
+            
+            if vertex.color.isOpaqueWhite { return true }
+        }
+        
+        return false
+    }
+    
     // MARK: - Initialization
     
     public init(vertices: [Vertex] = [], premultipliedAlpha: Bool = false) {
@@ -79,5 +89,32 @@ public struct VertexData {
             }
         }
     }
+    
+    public func vertexAtIndex(index: Int) -> Vertex {
+        
+        return self.vertices[index]
+    }
+    
+    public mutating func setVertex(vertex: Vertex, atIndex index: Int) {
+        
+        self.vertices[index] = vertex
+        
+        if premultipliedAlpha {
+            
+            self.vertices[index].color.premultiplyAlpha()
+        }
+    }
+    
+    public func positionAtIndex(index: Int) -> Point {
+        
+        return Point(vector: self.vertices[index].position)
+    }
+    
+    public mutating func setPosition(position: Point, atIndex index: Int) {
+        
+        self.vertices[index].position = position.vector
+    }
+    
+    
 }
 

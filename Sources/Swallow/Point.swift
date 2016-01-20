@@ -18,4 +18,15 @@ public struct Point {
         self.x = x
         self.y = y
     }
+    
+    public init(vector: Vector2) {
+        
+        self.x = vector.x
+        self.y = vector.y
+    }
+    
+    public var vector: Vector2 {
+        
+        return Vector2(x, y)
+    }
 }
