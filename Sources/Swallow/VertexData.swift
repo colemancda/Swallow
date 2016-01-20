@@ -32,17 +32,28 @@ for that reason, the VertexData class mimics this behavior. You can choose how t
 values should be handled via the `premultipliedAlpha` property.
 
 */
-public struct VertexData {
+public final class VertexData {
     
     // MARK: - Properties
     
-    public var vertices: [Vertex]
+    public private(set) var vertices = UnsafeMutablePointer<Vertex>()
+    
+    public var count: Int {
+        
+        willSet {
+            
+            // must be new value
+            guard newValue != count else { return }
+            
+            
+        }
+    }
     
     public var premultipliedAlpha: Bool {
         
         willSet {
             
-            guard newValue != self.premultipliedAlpha else { return }
+            //guard newValue != self.premultipliedAlpha else { return }
             
             
         }
@@ -50,20 +61,54 @@ public struct VertexData {
     
     // MARK: - Initialization
     
-    public init(vertices: [Vertex] = [], premultipliedAlpha: Bool = false) {
+    deinit {
         
-        self.vertices = vertices
-        self.premultipliedAlpha = false
+        vertices.dealloc(count)
+    }
+    
+    public init(count: Int = 0, premultipliedAlpha: Bool = false) {
+        
+        self.count = count
+        self.premultipliedAlpha = premultipliedAlpha
     }
     
     // MARK: - Methods
     
     /// Transforms the vertex position of this instance by a certain matrix and copies the result to
-    /// another VertexData instance. Limit the operation to a range of vertices via the `fromIndex` and
-    /// `numVertices` parameters.
-    public func copy(inout target: VertexData, atIndex targetIndex: Int = 0, matrix: Matrix? = nil, fromIndex: Int = 0, count: Int? = nil) {
+    /// another `VertexData` instance. Limit the operation to a range of vertices via the `fromIndex` and
+    /// `count` parameters.
+    public func copyTo(inout target: VertexData, atIndex targetIndex: Int = 0, matrix: Matrix? = nil, fromIndex: Int = 0, count: Int? = nil) {
         
-        let numVertices = count ?? self.vertices.count
+        var count = count ?? self.count
+        
+        if (count < 0 || fromIndex + count > self.count) {
+            count = self.count - fromIndex
+        }
+        
+        guard (targetIndex + count > target.count) == false else { fatalError("Target too small") }
+        
+        
+        
+        let fromVertices = vertices.suffixFrom(fromIndex)
+        
+        if let matrix = matrix {
+            
+            
+        } else {
+            
+            var newTargetArray = target.vertices.prefixUpTo(targetIndex)
+            
+            let fromRange = fromIndex ..< (fromIndex + count)
+            
+            let arrayToCopy = self.vertices.
+            
+            target.vertices.insertContentsOf(vertices, at: <#T##Int#>)
+            
+            memcpy(target.vertices.r, <#T##UnsafePointer<Void>#>, <#T##Int#>)
+        }
+    }
+    
+    public func updateVertices() {
         
         
     }
