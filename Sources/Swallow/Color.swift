@@ -20,11 +20,11 @@ public struct Color: Equatable {
         self.value = value
     }
     
-    public init(alpha: UInt8? = nil, red: UInt8, green: UInt8, blue: UInt8) {
+    public init(alpha: UInt8 = 0, red: UInt8 = 0, green: UInt8 = 0, blue: UInt8 = 0) {
         
         let rgbValue: CInt = (CInt(red) << 16) | (CInt(green) << 8) | CInt(blue)
         
-        if let alpha = alpha {
+        if alpha != 0 {
             
             let argbValue = (CInt(alpha) << 24) | rgbValue
             
@@ -32,7 +32,7 @@ public struct Color: Equatable {
         }
         else {
             
-            self.value = CUnsignedInt(rgbValue)
+            self.value = CUnsignedInt(bitPattern: rgbValue)
         }
     }
     

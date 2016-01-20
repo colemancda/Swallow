@@ -93,8 +93,54 @@ final class ColorTests: XCTestCase {
                 XCTAssert(color.alpha != color2.alpha)
             }
         }
+        
+        do {
+            
+            // test alpha initialization values
+            
+            for color in TestColors {
+                
+                for i in 0 ... 255 {
+                    
+                    let newColor = Color(alpha: UInt8(i), red: color.red, green: color.green, blue: color.blue)
+                    
+                    XCTAssert(color.equalColor(newColor))
+                }
+            }
+        }
     }
     
+    func testAllColors() {
+        
+        var count = 0
+        
+        let range = UInt8.min ..< UInt8.max
+        
+        for red: UInt8 in range {
+            
+            for blue: UInt8 in range {
+                
+                for green: UInt8 in range {
+                    
+                    // create color
+                    
+                    let _ = Color(red: red, green: green, blue: blue)
+                    
+                    count += 1
+                    
+                    // try creating all alpha values just to test
+                    for alpha: UInt8 in range {
+                        
+                        let alphaColor = Color(alpha: alpha, red: red, green: green, blue: blue)
+                        
+                        XCTAssert(alphaColor.alpha == alpha)
+                    }
+                }
+            }
+        }
+        
+        print("\(count) possible colors")
+    }
 }
 
 // MARK: - Constants
