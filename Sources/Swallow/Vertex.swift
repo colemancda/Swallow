@@ -6,7 +6,6 @@
 //  Copyright © 2016 PureSwift. All rights reserved.
 //
 
-
 public struct Vertex {
     
     // MARK: - Properties
@@ -17,5 +16,12 @@ public struct Vertex {
     
     public var color: VertexColor
     
+    // MARK: - Initialization
     
+    public init(position: Vector2, textureCoordinates: Vector2, color: VertexColor) {
+        
+        self.position = position
+        self.textureCoordinates = textureCoordinates
+        self.color = color
+    }
 }
