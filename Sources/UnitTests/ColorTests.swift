@@ -27,6 +27,24 @@ final class ColorTests: XCTestCase {
             
             XCTAssert(color1.blue == UInt8.max, "\(color1) == \(UInt8.max)")
         }
+        
+        for color in TestColors {
+            
+            let color2 = Color(red: color.red, green: color.green, blue: color.blue)
+            
+            XCTAssert(color == color2, "\(color) == \(color2)")
+            
+            XCTAssert(color.blue == color2.blue)
+            
+            XCTAssert(color.red == color2.red)
+            
+            XCTAssert(color.green == color2.green)
+            
+            XCTAssert(color.alpha == color2.alpha)
+            
+            // alpha is 0 by default
+            XCTAssert(color.alpha == UInt8.min)
+        }
     }
     
     func testColorEquality() {
@@ -55,6 +73,49 @@ final class ColorTests: XCTestCase {
             
             XCTAssert(color1.equalColor(color2))
         }
+        
+        do {
+            
+            for color in TestColors {
+                
+                let color2 = Color(alpha: 75, red: color.red, green: color.green, blue: color.blue)
+                
+                XCTAssert(color.equalColor(color2))
+                
+                XCTAssert(color != color2, "\(color) != \(color2)")
+                
+                XCTAssert(color.blue == color2.blue)
+                
+                XCTAssert(color.red == color2.red)
+                
+                XCTAssert(color.green == color2.green)
+                
+                XCTAssert(color.alpha != color2.alpha)
+            }
+        }
     }
     
 }
+
+// MARK: - Constants
+
+let TestColors: [Color] = [
+    Color.white,
+    Color.silver,
+    Color.gray,
+    Color.black,
+    Color.red,
+    Color.maroon,
+    Color.yellow,
+    Color.olive,
+    Color.lime,
+    Color.green,
+    Color.aqua,
+    Color.teal,
+    Color.blue,
+    Color.navy,
+    Color.fuchsia,
+    Color.purple
+]
+
+
