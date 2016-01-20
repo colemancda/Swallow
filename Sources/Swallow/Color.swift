@@ -28,7 +28,7 @@ public struct Color: Equatable {
             
             let argbValue = (CInt(alpha) << 24) | rgbValue
             
-            self.value = CUnsignedInt(argbValue)
+            self.value = CUnsignedInt(bitPattern: argbValue)
         }
         else {
             
