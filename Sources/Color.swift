@@ -6,6 +6,7 @@
 //  Copyright © 2016 PureSwift. All rights reserved.
 //
 
+/// Unsigned integer representation of a color.
 public struct Color: Equatable {
     
     // MARK: - Properties
@@ -19,28 +20,76 @@ public struct Color: Equatable {
         self.value = value
     }
     
-    public init(r: UInt8, g: UInt8, b: UInt8) {
+    public init(a: UInt8? = nil, r: UInt8, g: UInt8, b: UInt8) {
         
-        self.value = CUnsignedInt( ( CInt(r) << 16) | ( CInt(g) << 8) | CInt(b) )
+        let rgbValue: CInt = (CInt(r) << 16) | (CInt(g) << 8) | CInt(b)
+        
+        if let alpha = a {
+            
+            let argbValue = (CInt(alpha) << 24) | rgbValue
+            
+            self.value = CUnsignedInt(argbValue)
+        }
+        else {
+            
+            self.value = CUnsignedInt(rgbValue)
+        }
     }
     
-    public init(a: UInt8, r: UInt8, g: UInt8, b: UInt8) {
+    // MARK: - Getters
+    
+    public var alpha: UInt8 {
         
-        self.value = CUnsignedInt( ( CInt(a) << 24) | ( CInt(r) << 16) | ( CInt(g) << 8) | CInt(b) )
+        return UInt8((self.value >> 24) & CUnsignedInt(0xff))
     }
+    
+    public var red: UInt8 {
+        
+        return UInt8((self.value >> 16) & CUnsignedInt(0xff))
+    }
+    
+    public var green: UInt8 {
+        
+        return UInt8((self.value >> 8)  & CUnsignedInt(0xff))
+    }
+    
+    public var blue: UInt8 {
+        
+        return UInt8((self.value)       & CUnsignedInt(0xff))
+    }
+    
+    // MARK: - Constants
+    
+    public static let white     = Color(0xffffff)
+    public static let silver    = Color(0xc0c0c0)
+    public static let gray      = Color(0x808080)
+    public static let black     = Color(0x000000)
+    public static let red       = Color(0xff0000)
+    public static let maroon    = Color(0x800000)
+    public static let yellow    = Color(0xffff00)
+    public static let olive     = Color(0x808000)
+    public static let lime      = Color(0x00ff00)
+    public static let green     = Color(0x008000)
+    public static let aqua      = Color(0x00ffff)
+    public static let teal      = Color(0x008080)
+    public static let blue      = Color(0x0000ff)
+    public static let navy      = Color(0x000080)
+    public static let fuchsia   = Color(0xff00ff)
+    public static let purple    = Color(0x800080)
 }
 
 // MARK: - Equatable
 
 public func == (lhs: Color, rhs: Color) -> Bool {
     
-    return (lhs.value & 0xffffff) == (rhs.value & 0xffffff)
+    return lhs.value == rhs.value
 }
 
 public extension Color {
     
-    func equalARGB(rhs: Color) -> Bool {
+    /// Performs equality without comparing alpha values.
+    func equalColor(rhs: Color) -> Bool {
         
-        return self == rhs
+        return (self.value & 0xffffff) == (rhs.value & 0xffffff)
     }
 }
