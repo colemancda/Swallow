@@ -52,6 +52,8 @@ final class ColorTests: XCTestCase {
             XCTAssert(color1.alpha == UInt8.min)
             
             XCTAssert(color2.alpha == UInt8.max)
+            
+            XCTAssert(color1.equalColor(color2))
         }
     }
     
