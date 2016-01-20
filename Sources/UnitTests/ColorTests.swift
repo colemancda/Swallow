@@ -110,6 +110,7 @@ final class ColorTests: XCTestCase {
         }
     }
     
+    /*
     func testAllColors() {
         
         var count = 0
@@ -140,7 +141,7 @@ final class ColorTests: XCTestCase {
         }
         
         print("\(count) possible colors")
-    }
+    }*/
 }
 
 // MARK: - Constants
