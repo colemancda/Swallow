@@ -191,7 +191,10 @@ public struct Rectangle: Equatable, Hashable {
 
 public func == (lhs: Rectangle, rhs: Rectangle) -> Bool {
     
-    return false
+    return lhs.x.epsilonEqual(rhs.x)
+        && lhs.y.epsilonEqual(rhs.y)
+        && lhs.width.epsilonEqual(rhs.width)
+        && lhs.height.epsilonEqual(rhs.height)
 }
 
 // MARK: - Hashable
@@ -211,6 +214,11 @@ public extension Rectangle {
 
 public extension Rectangle {
     
+    var isEmpty: Bool {
+        
+        return width == 0 || height == 0
+    }
+    
     var top: Float {
         
         get { return y }
@@ -227,6 +235,18 @@ public extension Rectangle {
         
         get { return x }
         set { x = newValue }
+    }
+    
+    var right: Float {
+        
+        get { return x + width }
+        set { width = newValue - x }
+    }
+    
+    var size: (Float, Float) {
+        
+        get { return (width, height) }
+        set { width = newValue.0; height = newValue.1 }
     }
 }
 
