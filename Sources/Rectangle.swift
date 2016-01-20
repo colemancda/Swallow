@@ -6,8 +6,14 @@
 //  Copyright © 2016 PureSwift. All rights reserved.
 //
 
+#if os(iOS) || os(tvOS)
+    import Darwin.C
+#elseif os(Linux)
+    import GLibc
+#endif
+
 /// Describes a rectangle by its top-left corner point (x, y) and by its width and height.
-public struct Rectangle: Equatable {
+public struct Rectangle: Equatable, Hashable {
     
     // MARK: - Properties
     
@@ -119,17 +125,112 @@ public struct Rectangle: Equatable {
         height += 2 * dy
     }
     
+    public func fit(into: Rectangle, scaleMode: ScaleMode = .None, pixelPerfect: Bool) -> Rectangle {
+        
+        let factorX = into.width / self.width
+        let factorY = into.width / self.height
+        var factor  = Float(1.0)
+        
+        switch scaleMode {
+            
+        case .None: break
+            
+        case .ShowAll:
+            
+            factor = factorX < factorY ? factorX : factorY
+            if pixelPerfect { factor = nextSuitableScaleFactor(factor, up: false) }
+            
+        case .NoBorder:
+            
+            factor = factorX > factorY ? factorX : factorY
+            if (pixelPerfect) { factor = nextSuitableScaleFactor(factor, up: true) }
+        }
+        
+        let width = self.width * factor
+        let height = self.height * factor
+        
+        return Rectangle(x: into.x + (into.width - width) / 2, y: into.y + (into.height - height) / 2, width: width, height: height)
+    }
     
+    public mutating func scale(scale: Float) {
+        
+        self.x *= scale;
+        self.y *= scale;
+        self.width *= scale;
+        self.height *= scale;
+    }
+    
+    public mutating func scaleSize(scale: Float) {
+        
+        self.width *= scale;
+        self.height *= scale;
+    }
+    
+    public mutating func setEmpty() {
+        
+        self = Rectangle()
+    }
+    
+    public mutating func normalize() {
+        
+        if (self.width < 0.0)
+        {
+            self.width = -self.width;
+            self.x -= self.width;
+        }
+        
+        if (self.height < 0.0)
+        {
+            self.height = -self.height;
+            self.y -= self.height;
+        }
+    }
 }
 
 // MARK: - Equatable
 
 public func == (lhs: Rectangle, rhs: Rectangle) -> Bool {
     
-    
+    return false
 }
 
-// MARK: - Private Constants
+// MARK: - Hashable
+
+public extension Rectangle {
+    
+    public var hashValue: Int {
+        
+        return x.hashValue
+            ^ y.hashValue.shiftAndRotate(1)
+            ^ width.hashValue.shiftAndRotate(1)
+            ^ height.hashValue.shiftAndRotate(1)
+    }
+}
+
+// MARK: - Accessors
+
+public extension Rectangle {
+    
+    var top: Float {
+        
+        get { return y }
+        set { y = newValue }
+    }
+    
+    var bottom: Float {
+        
+        get { return y + height }
+        set { height = newValue - y }
+    }
+    
+    var left: Float {
+        
+        get { return x }
+        set { x = newValue }
+    }
+}
+
+// MARK: - Private
 
 private let positions = [
     Vector2(0, 0),
@@ -137,6 +238,31 @@ private let positions = [
     Vector2(0, 1),
     Vector2(1, 1)
 ]
+
+/// Calculates the next whole-number multiplier or divisor, moving either up or down.
+private func nextSuitableScaleFactor(factor: Float, up: Bool) -> Float {
+    
+    var divisor: Float = 1.0
+    
+    if (up)
+    {
+        if (factor >= 0.5) { return ceilf(factor) }
+        else
+        {
+            while (1.0 / (divisor + 1.0) > factor) { ++divisor }
+        }
+    }
+    else
+    {
+        if (factor >= 1.0) { return floorf(factor) }
+        else
+        {
+            while (1.0 / divisor > factor) { ++divisor }
+        }
+    }
+    
+    return 1.0 / divisor
+}
 
 // MARK: - Darwin Support
 

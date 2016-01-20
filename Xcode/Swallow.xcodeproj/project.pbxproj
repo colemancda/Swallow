@@ -25,6 +25,7 @@
 		6E7AE5AB1C4EB5AE007B1736 /* Float.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E7AE5AA1C4EB5AE007B1736 /* Float.swift */; };
 		6E7AE5AE1C4EB852007B1736 /* Vector2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E7AE5AD1C4EB852007B1736 /* Vector2.swift */; };
 		6E7AE5B01C4EC11C007B1736 /* ScaleMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E7AE5AF1C4EC11C007B1736 /* ScaleMode.swift */; };
+		6E7AE5BA1C4F293D007B1736 /* Integer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E7AE5B91C4F293D007B1736 /* Integer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		6E7AE5AA1C4EB5AE007B1736 /* Float.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Float.swift; sourceTree = "<group>"; };
 		6E7AE5AD1C4EB852007B1736 /* Vector2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vector2.swift; sourceTree = "<group>"; };
 		6E7AE5AF1C4EC11C007B1736 /* ScaleMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScaleMode.swift; sourceTree = "<group>"; };
+		6E7AE5B91C4F293D007B1736 /* Integer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Integer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,6 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				6E7AE5AA1C4EB5AE007B1736 /* Float.swift */,
+				6E7AE5B91C4F293D007B1736 /* Integer.swift */,
 			);
 			name = "Swift Extensions";
 			sourceTree = "<group>";
@@ -302,6 +305,7 @@
 				6E0E2B221C4E09E400A73965 /* Rectangle.swift in Sources */,
 				6E0E2B161C4DFB8200A73965 /* RenderingAPI.swift in Sources */,
 				6E0E2B1B1C4E063B00A73965 /* GLboolean.swift in Sources */,
+				6E7AE5BA1C4F293D007B1736 /* Integer.swift in Sources */,
 				6E0E2B241C4E0C6400A73965 /* UIKitConvertible.swift in Sources */,
 				6E0E2B261C4E0EE900A73965 /* Point.swift in Sources */,
 				6E7AE5A91C4EAD54007B1736 /* Matrix.swift in Sources */,
