@@ -9,14 +9,12 @@
 /* Begin PBXBuildFile section */
 		6E0E2AF61C4DF57300A73965 /* Swallow.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E0E2AF51C4DF57300A73965 /* Swallow.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6E0E2AFD1C4DF57300A73965 /* Swallow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E0E2AF21C4DF57300A73965 /* Swallow.framework */; };
-		6E0E2B021C4DF57300A73965 /* SwallowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0E2B011C4DF57300A73965 /* SwallowTests.swift */; };
 		6E0E2B0E1C4DF8D000A73965 /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0E2B0D1C4DF8D000A73965 /* Context.swift */; };
 		6E0E2B101C4DF9B300A73965 /* NativeContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0E2B0F1C4DF9B300A73965 /* NativeContext.swift */; };
-		6E0E2B141C4DFAF600A73965 /* Framebuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0E2B131C4DFAF600A73965 /* Framebuffer.swift */; };
 		6E0E2B161C4DFB8200A73965 /* RenderingAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0E2B151C4DFB8200A73965 /* RenderingAPI.swift */; };
 		6E0E2B181C4E04C600A73965 /* ClearMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0E2B171C4E04C600A73965 /* ClearMask.swift */; };
 		6E0E2B1B1C4E063B00A73965 /* GLboolean.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0E2B1A1C4E063B00A73965 /* GLboolean.swift */; };
-		6E0E2B1E1C4E088F00A73965 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0E2B1D1C4E088F00A73965 /* ViewController.swift */; };
+		6E0E2B1E1C4E088F00A73965 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0E2B1D1C4E088F00A73965 /* UIViewController.swift */; };
 		6E0E2B201C4E095600A73965 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0E2B1F1C4E095600A73965 /* UIImage.swift */; };
 		6E0E2B221C4E09E400A73965 /* Rectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0E2B211C4E09E400A73965 /* Rectangle.swift */; };
 		6E0E2B241C4E0C6400A73965 /* UIKitConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0E2B231C4E0C6400A73965 /* UIKitConvertible.swift */; };
@@ -29,6 +27,9 @@
 		6E7AE5BC1C4F2ED4007B1736 /* Vertex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E7AE5BB1C4F2ED4007B1736 /* Vertex.swift */; };
 		6E7AE5BE1C4F2F74007B1736 /* VertexColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E7AE5BD1C4F2F74007B1736 /* VertexColor.swift */; };
 		6E7AE5C01C4F3022007B1736 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E7AE5BF1C4F3022007B1736 /* Color.swift */; };
+		6E7AE5C41C4F3AA5007B1736 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E7AE5C31C4F3AA5007B1736 /* main.swift */; };
+		6E7AE5C61C4F3AD7007B1736 /* ColorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E7AE5C51C4F3AD7007B1736 /* ColorTests.swift */; };
+		6E7AE5C81C4F3F5F007B1736 /* Framebuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0E2B131C4DFAF600A73965 /* Framebuffer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,7 +55,7 @@
 		6E0E2B151C4DFB8200A73965 /* RenderingAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenderingAPI.swift; sourceTree = "<group>"; };
 		6E0E2B171C4E04C600A73965 /* ClearMask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClearMask.swift; sourceTree = "<group>"; };
 		6E0E2B1A1C4E063B00A73965 /* GLboolean.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GLboolean.swift; sourceTree = "<group>"; };
-		6E0E2B1D1C4E088F00A73965 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		6E0E2B1D1C4E088F00A73965 /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		6E0E2B1F1C4E095600A73965 /* UIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		6E0E2B211C4E09E400A73965 /* Rectangle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rectangle.swift; sourceTree = "<group>"; };
 		6E0E2B231C4E0C6400A73965 /* UIKitConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKitConvertible.swift; sourceTree = "<group>"; };
@@ -67,6 +68,8 @@
 		6E7AE5BB1C4F2ED4007B1736 /* Vertex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vertex.swift; sourceTree = "<group>"; };
 		6E7AE5BD1C4F2F74007B1736 /* VertexColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VertexColor.swift; sourceTree = "<group>"; };
 		6E7AE5BF1C4F3022007B1736 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		6E7AE5C31C4F3AA5007B1736 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		6E7AE5C51C4F3AD7007B1736 /* ColorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,35 +131,11 @@
 		6E0E2B0C1C4DF59E00A73965 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				6E7AE5AC1C4EB5B1007B1736 /* Swift Extensions */,
-				6E0E2B1C1C4E086D00A73965 /* Darwin */,
-				6E0E2B191C4E062100A73965 /* OpenGL Extensions */,
-				6E0E2B121C4DFAE200A73965 /* Internal */,
-				6E0E2B111C4DFAD500A73965 /* Public */,
+				6E7AE5C21C4F3A78007B1736 /* UnitTests */,
+				6E7AE5C11C4F39A3007B1736 /* Swallow */,
 			);
 			name = Sources;
 			path = ../Sources;
-			sourceTree = "<group>";
-		};
-		6E0E2B111C4DFAD500A73965 /* Public */ = {
-			isa = PBXGroup;
-			children = (
-				6E0E2B0D1C4DF8D000A73965 /* Context.swift */,
-				6E0E2B0F1C4DF9B300A73965 /* NativeContext.swift */,
-				6E0E2B151C4DFB8200A73965 /* RenderingAPI.swift */,
-				6E0E2B171C4E04C600A73965 /* ClearMask.swift */,
-				6E7AE5AF1C4EC11C007B1736 /* ScaleMode.swift */,
-				6E7AE5A71C4EA974007B1736 /* Geometry */,
-			);
-			name = Public;
-			sourceTree = "<group>";
-		};
-		6E0E2B121C4DFAE200A73965 /* Internal */ = {
-			isa = PBXGroup;
-			children = (
-				6E0E2B131C4DFAF600A73965 /* Framebuffer.swift */,
-			);
-			name = Internal;
 			sourceTree = "<group>";
 		};
 		6E0E2B191C4E062100A73965 /* OpenGL Extensions */ = {
@@ -167,14 +146,14 @@
 			name = "OpenGL Extensions";
 			sourceTree = "<group>";
 		};
-		6E0E2B1C1C4E086D00A73965 /* Darwin */ = {
+		6E0E2B1C1C4E086D00A73965 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
-				6E0E2B1D1C4E088F00A73965 /* ViewController.swift */,
+				6E0E2B1D1C4E088F00A73965 /* UIViewController.swift */,
 				6E0E2B1F1C4E095600A73965 /* UIImage.swift */,
 				6E0E2B231C4E0C6400A73965 /* UIKitConvertible.swift */,
 			);
-			name = Darwin;
+			name = UIKit;
 			sourceTree = "<group>";
 		};
 		6E7AE5A71C4EA974007B1736 /* Geometry */ = {
@@ -183,7 +162,6 @@
 				6E0E2B211C4E09E400A73965 /* Rectangle.swift */,
 				6E0E2B251C4E0EE900A73965 /* Point.swift */,
 				6E7AE5A81C4EAD54007B1736 /* Matrix.swift */,
-				6E7AE5AD1C4EB852007B1736 /* Vector2.swift */,
 				6E7AE5BB1C4F2ED4007B1736 /* Vertex.swift */,
 				6E7AE5BD1C4F2F74007B1736 /* VertexColor.swift */,
 				6E7AE5BF1C4F3022007B1736 /* Color.swift */,
@@ -198,6 +176,41 @@
 				6E7AE5B91C4F293D007B1736 /* Integer.swift */,
 			);
 			name = "Swift Extensions";
+			sourceTree = "<group>";
+		};
+		6E7AE5C11C4F39A3007B1736 /* Swallow */ = {
+			isa = PBXGroup;
+			children = (
+				6E7AE5C71C4F3CB9007B1736 /* OpenGL */,
+				6E0E2B1C1C4E086D00A73965 /* UIKit */,
+				6E7AE5A71C4EA974007B1736 /* Geometry */,
+				6E0E2B191C4E062100A73965 /* OpenGL Extensions */,
+				6E7AE5AC1C4EB5B1007B1736 /* Swift Extensions */,
+				6E0E2B0D1C4DF8D000A73965 /* Context.swift */,
+				6E0E2B0F1C4DF9B300A73965 /* NativeContext.swift */,
+				6E0E2B151C4DFB8200A73965 /* RenderingAPI.swift */,
+				6E0E2B171C4E04C600A73965 /* ClearMask.swift */,
+				6E7AE5AF1C4EC11C007B1736 /* ScaleMode.swift */,
+				6E0E2B131C4DFAF600A73965 /* Framebuffer.swift */,
+			);
+			path = Swallow;
+			sourceTree = "<group>";
+		};
+		6E7AE5C21C4F3A78007B1736 /* UnitTests */ = {
+			isa = PBXGroup;
+			children = (
+				6E7AE5C31C4F3AA5007B1736 /* main.swift */,
+				6E7AE5C51C4F3AD7007B1736 /* ColorTests.swift */,
+			);
+			path = UnitTests;
+			sourceTree = "<group>";
+		};
+		6E7AE5C71C4F3CB9007B1736 /* OpenGL */ = {
+			isa = PBXGroup;
+			children = (
+				6E7AE5AD1C4EB852007B1736 /* Vector2.swift */,
+			);
+			name = OpenGL;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -323,9 +336,9 @@
 				6E7AE5A91C4EAD54007B1736 /* Matrix.swift in Sources */,
 				6E7AE5AE1C4EB852007B1736 /* Vector2.swift in Sources */,
 				6E7AE5AB1C4EB5AE007B1736 /* Float.swift in Sources */,
-				6E0E2B1E1C4E088F00A73965 /* ViewController.swift in Sources */,
-				6E0E2B141C4DFAF600A73965 /* Framebuffer.swift in Sources */,
+				6E0E2B1E1C4E088F00A73965 /* UIViewController.swift in Sources */,
 				6E0E2B0E1C4DF8D000A73965 /* Context.swift in Sources */,
+				6E7AE5C81C4F3F5F007B1736 /* Framebuffer.swift in Sources */,
 				6E7AE5B01C4EC11C007B1736 /* ScaleMode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -334,7 +347,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6E0E2B021C4DF57300A73965 /* SwallowTests.swift in Sources */,
+				6E7AE5C41C4F3AA5007B1736 /* main.swift in Sources */,
+				6E7AE5C61C4F3AD7007B1736 /* ColorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -478,16 +492,19 @@
 		6E0E2B0A1C4DF57300A73965 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = SwallowTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.pureswift.SwallowTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		6E0E2B0B1C4DF57300A73965 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = SwallowTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.pureswift.SwallowTests;

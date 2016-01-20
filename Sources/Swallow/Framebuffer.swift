@@ -49,7 +49,7 @@ internal final class Framebuffer {
     
     internal init() {
         
-        
+        fatalError()
     }
     
     // MARK: - Methods
