@@ -34,5 +34,38 @@ values should be handled via the `premultipliedAlpha` property.
 */
 public struct VertexData {
     
+    // MARK: - Properties
     
+    public var vertices: [Vertex]
+    
+    public var premultipliedAlpha: Bool {
+        
+        willSet {
+            
+            guard newValue != self.premultipliedAlpha else { return }
+            
+            
+        }
+    }
+    
+    // MARK: - Initialization
+    
+    public init(vertices: [Vertex] = [], premultipliedAlpha: Bool = false) {
+        
+        self.vertices = vertices
+        self.premultipliedAlpha = false
+    }
+    
+    // MARK: - Methods
+    
+    /// Transforms the vertex position of this instance by a certain matrix and copies the result to
+    /// another VertexData instance. Limit the operation to a range of vertices via the `fromIndex` and
+    /// `numVertices` parameters.
+    public func copy(inout target: VertexData, atIndex targetIndex: Int = 0, matrix: Matrix? = nil, fromIndex: Int = 0, count: Int? = nil) {
+        
+        let numVertices = count ?? self.vertices.count
+        
+        
+    }
 }
+
