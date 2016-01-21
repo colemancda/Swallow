@@ -186,6 +186,38 @@ public struct Matrix4 {
     }
 }
 
+// MARK: - Math
+
+public extension Matrix4 {
+    
+    public mutating func multiply(lhs: Matrix4) {
+        
+        var m = Matrix4.Identity
+        
+        m[0]  = lhs[0] * self[0]  + lhs[4] * self[1]  + lhs[8] * self[2]   + lhs[12] * self[3];
+        m[4]  = lhs[0] * self[4]  + lhs[4] * self[5]  + lhs[8] * self[6]   + lhs[12] * self[7];
+        m[8]  = lhs[0] * self[8]  + lhs[4] * self[9]  + lhs[8] * self[10]  + lhs[12] * self[11];
+        m[12] = lhs[0] * self[12] + lhs[4] * self[13] + lhs[8] * self[14]  + lhs[12] * self[15];
+        
+        m[1]  = lhs[1] * self[0]  + lhs[5] * self[1]  + lhs[9] * self[2]   + lhs[13] * self[3];
+        m[5]  = lhs[1] * self[4]  + lhs[5] * self[5]  + lhs[9] * self[6]   + lhs[13] * self[7];
+        m[9]  = lhs[1] * self[8]  + lhs[5] * self[9]  + lhs[9] * self[10]  + lhs[13] * self[11];
+        m[13] = lhs[1] * self[12] + lhs[5] * self[13] + lhs[9] * self[14]  + lhs[13] * self[15];
+        
+        m[2]  = lhs[2] * self[0]  + lhs[6] * self[1]  + lhs[10] * self[2]  + lhs[14] * self[3];
+        m[6]  = lhs[2] * self[4]  + lhs[6] * self[5]  + lhs[10] * self[6]  + lhs[14] * self[7];
+        m[10] = lhs[2] * self[8]  + lhs[6] * self[9]  + lhs[10] * self[10] + lhs[14] * self[11];
+        m[14] = lhs[2] * self[12] + lhs[6] * self[13] + lhs[10] * self[14] + lhs[14] * self[15];
+        
+        m[3]  = lhs[3] * self[0]  + lhs[7] * self[1]  + lhs[11] * self[2]  + lhs[15] * self[3];
+        m[7]  = lhs[3] * self[4]  + lhs[7] * self[5]  + lhs[11] * self[6]  + lhs[15] * self[7];
+        m[11] = lhs[3] * self[8]  + lhs[7] * self[9]  + lhs[11] * self[10] + lhs[15] * self[11];
+        m[15] = lhs[3] * self[12] + lhs[7] * self[13] + lhs[11] * self[14] + lhs[15] * self[15];
+        
+        self = m
+    }
+}
+
 // MARK: - Darwin Support
 
 #if os(iOS) || os(tvOS)
