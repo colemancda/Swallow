@@ -177,6 +177,41 @@ public struct VertexData {
         return Float(self.vertices[index].color.alpha) / 255
     }
     
+    public mutating func scaleAlpha(factor: Float, atIndex index: Int = 0, count: Int? = nil) {
+        
+        let count = count ?? self.vertices.count
+        
+        assert(!(index < 0 || index + count > self.vertices.count), "Invalid Index Range")
+        
+        guard factor != 1 else { return }
+        
+        let minAlpha = premultipliedAlpha ? CInt(MinimumAlpha * 255) : 0
+        
+        for i in index ..< (index + count) {
+            
+            var vertexColor = self.vertices[i].color
+            
+            let newAlpha = UInt8((Float(vertexColor.alpha) * factor).clamp(min: Float(minAlpha), max: 255))
+            
+            // create new color
+            
+            if premultipliedAlpha {
+                
+                vertexColor.unmultiplyAlpha()
+                vertexColor.alpha = newAlpha
+                vertexColor.premultiplyAlpha()
+                
+            } else {
+                
+                vertexColor = VertexColor(red: vertexColor.red, green: vertexColor.green, blue: vertexColor.blue, alpha: newAlpha)
+            }
+            
+            // set value
+            self.vertices[index].color = vertexColor
+        }
+    }
+    
+    
 }
 
 // MARK: - Private
