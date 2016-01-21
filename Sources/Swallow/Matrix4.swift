@@ -194,25 +194,25 @@ public extension Matrix4 {
         
         var m = Matrix4.Identity
         
-        m[0]  = lhs[0] * self[0]  + lhs[4] * self[1]  + lhs[8] * self[2]   + lhs[12] * self[3];
-        m[4]  = lhs[0] * self[4]  + lhs[4] * self[5]  + lhs[8] * self[6]   + lhs[12] * self[7];
-        m[8]  = lhs[0] * self[8]  + lhs[4] * self[9]  + lhs[8] * self[10]  + lhs[12] * self[11];
-        m[12] = lhs[0] * self[12] + lhs[4] * self[13] + lhs[8] * self[14]  + lhs[12] * self[15];
+        m.value.0  = lhs.value.0 * value.0  + lhs.value.4 * value.1  + lhs.value.8 * value.2   + lhs.value.12 * value.3;
+        m.value.4  = lhs.value.0 * value.4  + lhs.value.4 * value.5  + lhs.value.8 * value.6   + lhs.value.12 * value.7;
+        m.value.8  = lhs.value.0 * value.8  + lhs.value.4 * value.9  + lhs.value.8 * value.10  + lhs.value.12 * value.11;
+        m.value.12 = lhs.value.0 * value.12 + lhs.value.4 * value.13 + lhs.value.8 * value.14  + lhs.value.12 * value.15;
         
-        m[1]  = lhs[1] * self[0]  + lhs[5] * self[1]  + lhs[9] * self[2]   + lhs[13] * self[3];
-        m[5]  = lhs[1] * self[4]  + lhs[5] * self[5]  + lhs[9] * self[6]   + lhs[13] * self[7];
-        m[9]  = lhs[1] * self[8]  + lhs[5] * self[9]  + lhs[9] * self[10]  + lhs[13] * self[11];
-        m[13] = lhs[1] * self[12] + lhs[5] * self[13] + lhs[9] * self[14]  + lhs[13] * self[15];
+        m.value.1  = lhs.value.1 * value.0  + lhs.value.5 * value.1  + lhs.value.9 * value.2   + lhs.value.13 * value.3;
+        m.value.5  = lhs.value.1 * value.4  + lhs.value.5 * value.5  + lhs.value.9 * value.6   + lhs.value.13 * value.7;
+        m.value.9  = lhs.value.1 * value.8  + lhs.value.5 * value.9  + lhs.value.9 * value.10  + lhs.value.13 * value.11;
+        m.value.13 = lhs.value.1 * value.12 + lhs.value.5 * value.13 + lhs.value.9 * value.14  + lhs.value.13 * value.15;
         
-        m[2]  = lhs[2] * self[0]  + lhs[6] * self[1]  + lhs[10] * self[2]  + lhs[14] * self[3];
-        m[6]  = lhs[2] * self[4]  + lhs[6] * self[5]  + lhs[10] * self[6]  + lhs[14] * self[7];
-        m[10] = lhs[2] * self[8]  + lhs[6] * self[9]  + lhs[10] * self[10] + lhs[14] * self[11];
-        m[14] = lhs[2] * self[12] + lhs[6] * self[13] + lhs[10] * self[14] + lhs[14] * self[15];
+        m.value.2  = lhs.value.2 * value.0  + lhs.value.6 * value.1  + lhs.value.10 * value.2  + lhs.value.14 * value.3;
+        m.value.6  = lhs.value.2 * value.4  + lhs.value.6 * value.5  + lhs.value.10 * value.6  + lhs.value.14 * value.7;
+        m.value.10 = lhs.value.2 * value.8  + lhs.value.6 * value.9  + lhs.value.10 * value.10 + lhs.value.14 * value.11;
+        m.value.14 = lhs.value.2 * value.12 + lhs.value.6 * value.13 + lhs.value.10 * value.14 + lhs.value.14 * value.15;
         
-        m[3]  = lhs[3] * self[0]  + lhs[7] * self[1]  + lhs[11] * self[2]  + lhs[15] * self[3];
-        m[7]  = lhs[3] * self[4]  + lhs[7] * self[5]  + lhs[11] * self[6]  + lhs[15] * self[7];
-        m[11] = lhs[3] * self[8]  + lhs[7] * self[9]  + lhs[11] * self[10] + lhs[15] * self[11];
-        m[15] = lhs[3] * self[12] + lhs[7] * self[13] + lhs[11] * self[14] + lhs[15] * self[15];
+        m.value.3  = lhs.value.3 * value.0  + lhs.value.7 * value.1  + lhs.value.11 * value.2  + lhs.value.15 * value.3;
+        m.value.7  = lhs.value.3 * value.4  + lhs.value.7 * value.5  + lhs.value.11 * value.6  + lhs.value.15 * value.7;
+        m.value.11 = lhs.value.3 * value.8  + lhs.value.7 * value.9  + lhs.value.11 * value.10 + lhs.value.15 * value.11;
+        m.value.15 = lhs.value.3 * value.12 + lhs.value.7 * value.13 + lhs.value.11 * value.14 + lhs.value.15 * value.15;
         
         self = m
     }
