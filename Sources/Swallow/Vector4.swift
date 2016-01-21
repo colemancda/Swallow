@@ -21,3 +21,14 @@ public struct Vector4: OpenGLMathType {
         self.value = (x, y, z, w)
     }
 }
+
+// MARK: - Equatable
+
+@inline(__always)
+public func ==(lhs: Vector4, rhs: Vector4) -> Bool {
+    
+    return lhs.value.0  == rhs.value.0
+        && lhs.value.1  == rhs.value.1
+        && lhs.value.2  == rhs.value.2
+        && lhs.value.3  == rhs.value.3
+}

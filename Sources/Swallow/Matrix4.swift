@@ -19,6 +19,7 @@ public struct Matrix4: OpenGLMathType {
     
     // MARK: - Initialization
     
+    @inline(__always)
     public init(_ m0: (Float, Float, Float, Float),
                 _ m1: (Float, Float, Float, Float),
                 _ m2: (Float, Float, Float, Float),
@@ -36,105 +37,105 @@ public struct Matrix4: OpenGLMathType {
     
     public var m00: Float {
         
-        get { return value.0 }
-        set { value.0 = newValue }
+        @inline(__always) get { return value.0 }
+        @inline(__always) set { value.0 = newValue }
     }
     
     public var m01: Float {
         
-        get { return value.1 }
-        set { value.1 = newValue }
+        @inline(__always) get { return value.1 }
+        @inline(__always) set { value.1 = newValue }
     }
     
     public var m02: Float {
         
-        get { return value.2 }
-        set { value.2 = newValue }
+        @inline(__always) get { return value.2 }
+        @inline(__always) set { value.2 = newValue }
     }
     
     public var m03: Float {
         
-        get { return value.3 }
-        set { value.3 = newValue }
+        @inline(__always) get { return value.3 }
+        @inline(__always) set { value.3 = newValue }
     }
     
     public var m10: Float {
         
-        get { return value.4 }
-        set { value.4 = newValue }
+        @inline(__always) get { return value.4 }
+        @inline(__always) set { value.4 = newValue }
     }
     
     public var m11: Float {
         
-        get { return value.5 }
-        set { value.5 = newValue }
+        @inline(__always) get { return value.5 }
+        @inline(__always) set { value.5 = newValue }
     }
     
     public var m12: Float {
         
-        get { return value.6 }
-        set { value.6 = newValue }
+        @inline(__always) get { return value.6 }
+        @inline(__always) set { value.6 = newValue }
     }
     
     public var m13: Float {
         
-        get { return value.7 }
-        set { value.7 = newValue }
+        @inline(__always) get { return value.7 }
+        @inline(__always) set { value.7 = newValue }
     }
     
     public var m20: Float {
         
-        get { return value.8 }
-        set { value.8 = newValue }
+        @inline(__always) get { return value.8 }
+        @inline(__always) set { value.8 = newValue }
     }
     
     public var m21: Float {
         
-        get { return value.9 }
-        set { value.9 = newValue }
+        @inline(__always) get { return value.9 }
+        @inline(__always) set { value.9 = newValue }
     }
     
     public var m22: Float {
         
-        get { return value.10 }
-        set { value.10 = newValue }
+        @inline(__always) get { return value.10 }
+        @inline(__always) set { value.10 = newValue }
     }
     
     public var m23: Float {
         
-        get { return value.11 }
-        set { value.11 = newValue }
+        @inline(__always) get { return value.11 }
+        @inline(__always) set { value.11 = newValue }
     }
     
     public var m30: Float {
         
-        get { return value.12 }
-        set { value.12 = newValue }
+        @inline(__always) get { return value.12 }
+        @inline(__always) set { value.12 = newValue }
     }
     
     public var m31: Float {
         
-        get { return value.13 }
-        set { value.13 = newValue }
+        @inline(__always) get { return value.13 }
+        @inline(__always) set { value.13 = newValue }
     }
     
     public var m32: Float {
         
-        get { return value.14 }
-        set { value.14 = newValue }
+        @inline(__always) get { return value.14 }
+        @inline(__always) set { value.14 = newValue }
     }
     
     public var m33: Float {
         
-        get { return value.15 }
-        set { value.15 = newValue }
+        @inline(__always) get { return value.15 }
+        @inline(__always) set { value.15 = newValue }
     }
     
     // MARK: - Subscripting
     
     public subscript (index: Int) -> Float {
         
-        get {
+        @inline(__always) get {
             
             switch index {
                 
@@ -159,7 +160,7 @@ public struct Matrix4: OpenGLMathType {
             }
         }
         
-        set {
+        @inline(__always) set {
             
             switch index {
                 
@@ -186,37 +187,57 @@ public struct Matrix4: OpenGLMathType {
     }
 }
 
+// MARK: - Equatable
+
+@inline(__always)
+public func ==(lhs: Matrix4, rhs: Matrix4) -> Bool {
+    
+    return lhs.value.0  == rhs.value.0
+        && lhs.value.1  == rhs.value.1
+        && lhs.value.2  == rhs.value.2
+        && lhs.value.3  == rhs.value.3
+        && lhs.value.4  == rhs.value.4
+        && lhs.value.5  == rhs.value.5
+        && lhs.value.6  == rhs.value.6
+        && lhs.value.7  == rhs.value.7
+        && lhs.value.8  == rhs.value.8
+        && lhs.value.9  == rhs.value.9
+        && lhs.value.10 == rhs.value.10
+        && lhs.value.11 == rhs.value.11
+        && lhs.value.12 == rhs.value.12
+        && lhs.value.13 == rhs.value.13
+        && lhs.value.14 == rhs.value.14
+        && lhs.value.15 == rhs.value.15
+}
+
 // MARK: - Math
 
-public extension Matrix4 {
+@inline(__always)
+public func * (lhs: Matrix4, rhs: Matrix4) -> Matrix4 {
     
-    @inline(__always)
-    public mutating func multiply(lhs: Matrix4) {
-        
-        var m = Matrix4.Identity
-        
-        m.value.0  = lhs.value.0 * value.0  + lhs.value.4 * value.1  + lhs.value.8 * value.2   + lhs.value.12 * value.3;
-        m.value.4  = lhs.value.0 * value.4  + lhs.value.4 * value.5  + lhs.value.8 * value.6   + lhs.value.12 * value.7;
-        m.value.8  = lhs.value.0 * value.8  + lhs.value.4 * value.9  + lhs.value.8 * value.10  + lhs.value.12 * value.11;
-        m.value.12 = lhs.value.0 * value.12 + lhs.value.4 * value.13 + lhs.value.8 * value.14  + lhs.value.12 * value.15;
-        
-        m.value.1  = lhs.value.1 * value.0  + lhs.value.5 * value.1  + lhs.value.9 * value.2   + lhs.value.13 * value.3;
-        m.value.5  = lhs.value.1 * value.4  + lhs.value.5 * value.5  + lhs.value.9 * value.6   + lhs.value.13 * value.7;
-        m.value.9  = lhs.value.1 * value.8  + lhs.value.5 * value.9  + lhs.value.9 * value.10  + lhs.value.13 * value.11;
-        m.value.13 = lhs.value.1 * value.12 + lhs.value.5 * value.13 + lhs.value.9 * value.14  + lhs.value.13 * value.15;
-        
-        m.value.2  = lhs.value.2 * value.0  + lhs.value.6 * value.1  + lhs.value.10 * value.2  + lhs.value.14 * value.3;
-        m.value.6  = lhs.value.2 * value.4  + lhs.value.6 * value.5  + lhs.value.10 * value.6  + lhs.value.14 * value.7;
-        m.value.10 = lhs.value.2 * value.8  + lhs.value.6 * value.9  + lhs.value.10 * value.10 + lhs.value.14 * value.11;
-        m.value.14 = lhs.value.2 * value.12 + lhs.value.6 * value.13 + lhs.value.10 * value.14 + lhs.value.14 * value.15;
-        
-        m.value.3  = lhs.value.3 * value.0  + lhs.value.7 * value.1  + lhs.value.11 * value.2  + lhs.value.15 * value.3;
-        m.value.7  = lhs.value.3 * value.4  + lhs.value.7 * value.5  + lhs.value.11 * value.6  + lhs.value.15 * value.7;
-        m.value.11 = lhs.value.3 * value.8  + lhs.value.7 * value.9  + lhs.value.11 * value.10 + lhs.value.15 * value.11;
-        m.value.15 = lhs.value.3 * value.12 + lhs.value.7 * value.13 + lhs.value.11 * value.14 + lhs.value.15 * value.15;
-        
-        self = m
-    }
+    var m = Matrix4.Identity
+    
+    m.value.0  = lhs.value.0 * rhs.value.0  + lhs.value.4 * rhs.value.1  + lhs.value.8 * rhs.value.2   + lhs.value.12 * rhs.value.3;
+    m.value.4  = lhs.value.0 * rhs.value.4  + lhs.value.4 * rhs.value.5  + lhs.value.8 * rhs.value.6   + lhs.value.12 * rhs.value.7;
+    m.value.8  = lhs.value.0 * rhs.value.8  + lhs.value.4 * rhs.value.9  + lhs.value.8 * rhs.value.10  + lhs.value.12 * rhs.value.11;
+    m.value.12 = lhs.value.0 * rhs.value.12 + lhs.value.4 * rhs.value.13 + lhs.value.8 * rhs.value.14  + lhs.value.12 * rhs.value.15;
+    
+    m.value.1  = lhs.value.1 * rhs.value.0  + lhs.value.5 * rhs.value.1  + lhs.value.9 * rhs.value.2   + lhs.value.13 * rhs.value.3;
+    m.value.5  = lhs.value.1 * rhs.value.4  + lhs.value.5 * rhs.value.5  + lhs.value.9 * rhs.value.6   + lhs.value.13 * rhs.value.7;
+    m.value.9  = lhs.value.1 * rhs.value.8  + lhs.value.5 * rhs.value.9  + lhs.value.9 * rhs.value.10  + lhs.value.13 * rhs.value.11;
+    m.value.13 = lhs.value.1 * rhs.value.12 + lhs.value.5 * rhs.value.13 + lhs.value.9 * rhs.value.14  + lhs.value.13 * rhs.value.15;
+    
+    m.value.2  = lhs.value.2 * rhs.value.0  + lhs.value.6 * rhs.value.1  + lhs.value.10 * rhs.value.2  + lhs.value.14 * rhs.value.3;
+    m.value.6  = lhs.value.2 * rhs.value.4  + lhs.value.6 * rhs.value.5  + lhs.value.10 * rhs.value.6  + lhs.value.14 * rhs.value.7;
+    m.value.10 = lhs.value.2 * rhs.value.8  + lhs.value.6 * rhs.value.9  + lhs.value.10 * rhs.value.10 + lhs.value.14 * rhs.value.11;
+    m.value.14 = lhs.value.2 * rhs.value.12 + lhs.value.6 * rhs.value.13 + lhs.value.10 * rhs.value.14 + lhs.value.14 * rhs.value.15;
+    
+    m.value.3  = lhs.value.3 * rhs.value.0  + lhs.value.7 * rhs.value.1  + lhs.value.11 * rhs.value.2  + lhs.value.15 * rhs.value.3;
+    m.value.7  = lhs.value.3 * rhs.value.4  + lhs.value.7 * rhs.value.5  + lhs.value.11 * rhs.value.6  + lhs.value.15 * rhs.value.7;
+    m.value.11 = lhs.value.3 * rhs.value.8  + lhs.value.7 * rhs.value.9  + lhs.value.11 * rhs.value.10 + lhs.value.15 * rhs.value.11;
+    m.value.15 = lhs.value.3 * rhs.value.12 + lhs.value.7 * rhs.value.13 + lhs.value.11 * rhs.value.14 + lhs.value.15 * rhs.value.15;
+    
+    return m
 }
 
 // MARK: - Darwin Support

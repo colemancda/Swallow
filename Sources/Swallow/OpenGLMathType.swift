@@ -6,7 +6,7 @@
 //  Copyright © 2016 PureSwift. All rights reserved.
 //
 
-public protocol OpenGLMathType {
+public protocol OpenGLMathType: Equatable {
     
     typealias PrimitiveValue
     

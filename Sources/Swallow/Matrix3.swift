@@ -122,6 +122,22 @@ public struct Matrix3: OpenGLMathType {
     }
 }
 
+// MARK: - Equatable
+
+@inline(__always)
+public func ==(lhs: Matrix3, rhs: Matrix3) -> Bool {
+    
+    return lhs.value.0  == rhs.value.0
+        && lhs.value.1  == rhs.value.1
+        && lhs.value.2  == rhs.value.2
+        && lhs.value.3  == rhs.value.3
+        && lhs.value.4  == rhs.value.4
+        && lhs.value.5  == rhs.value.5
+        && lhs.value.6  == rhs.value.6
+        && lhs.value.7  == rhs.value.7
+        && lhs.value.8  == rhs.value.8
+}
+
 // MARK: - Darwin Support
 
 #if os(iOS) || os(tvOS)

@@ -89,6 +89,16 @@ public struct Vector3: OpenGLMathType {
     }
 }
 
+// MARK: - Equatable
+
+@inline(__always)
+public func ==(lhs: Vector3, rhs: Vector3) -> Bool {
+    
+    return lhs.value.0  == rhs.value.0
+        && lhs.value.1  == rhs.value.1
+        && lhs.value.2  == rhs.value.2
+}
+
 // MARK: - Darwin Support
 
 #if os(iOS) || os(tvOS)

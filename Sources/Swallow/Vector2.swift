@@ -26,28 +26,24 @@ public struct Vector2: OpenGLMathType {
     public var x: Float {
         
         @inline(__always) get { return value.0 }
-        
         @inline(__always) set { value.0 = newValue }
     }
     
     public var y: Float {
         
         @inline(__always) get { return value.1 }
-        
         @inline(__always) set { value.1 = newValue }
     }
     
     public var s: Float {
         
         @inline(__always) get { return value.0 }
-        
         @inline(__always) set { value.0 = newValue }
     }
     
     public var t: Float {
         
         @inline(__always) get { return value.1 }
-        
         @inline(__always) set { value.1 = newValue }
     }
     
@@ -60,7 +56,6 @@ public struct Vector2: OpenGLMathType {
             switch index {
                 
             case 0: return value.0
-                
             case 1: return value.1
                 
             default: fatalError("Invalid index \(index)")
@@ -72,13 +67,21 @@ public struct Vector2: OpenGLMathType {
             switch index {
                 
             case 0: value.0 = newValue
-                
             case 1: value.1 = newValue
                 
             default: fatalError("Invalid index \(index)")
             }
         }
     }
+}
+
+// MARK: - Equatable
+
+@inline(__always)
+public func ==(lhs: Vector2, rhs: Vector2) -> Bool {
+    
+    return lhs.value.0  == rhs.value.0
+        && lhs.value.1  == rhs.value.1
 }
 
 // MARK: - Darwin Support
