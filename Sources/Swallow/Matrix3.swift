@@ -7,7 +7,7 @@
 //
 
 /// A 3x3 matrix stored in column-major order.
-public struct Matrix3 {
+public struct Matrix3: OpenGLMathType {
     
     // MARK: - Value
     

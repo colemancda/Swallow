@@ -38,6 +38,8 @@
 		6E8B7C321C50A55300296E6A /* Matrix3D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E8B7C311C50A55300296E6A /* Matrix3D.swift */; };
 		6E8B7C341C50A5D200296E6A /* Point3D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E8B7C331C50A5D200296E6A /* Point3D.swift */; };
 		6E8B7C361C50B5CD00296E6A /* Vector4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E8B7C351C50B5CD00296E6A /* Vector4.swift */; };
+		6E8B7C3E1C513E4A00296E6A /* MathTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E8B7C3C1C513DDE00296E6A /* MathTests.swift */; };
+		6E8B7C401C51445E00296E6A /* OpenGLMathType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E8B7C3F1C51445E00296E6A /* OpenGLMathType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +88,8 @@
 		6E8B7C311C50A55300296E6A /* Matrix3D.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Matrix3D.swift; sourceTree = "<group>"; };
 		6E8B7C331C50A5D200296E6A /* Point3D.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Point3D.swift; sourceTree = "<group>"; };
 		6E8B7C351C50B5CD00296E6A /* Vector4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vector4.swift; sourceTree = "<group>"; };
+		6E8B7C3C1C513DDE00296E6A /* MathTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MathTests.swift; sourceTree = "<group>"; };
+		6E8B7C3F1C51445E00296E6A /* OpenGLMathType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenGLMathType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -221,6 +225,7 @@
 			children = (
 				6E7AE5C31C4F3AA5007B1736 /* main.swift */,
 				6E7AE5C51C4F3AD7007B1736 /* ColorTests.swift */,
+				6E8B7C3C1C513DDE00296E6A /* MathTests.swift */,
 			);
 			path = UnitTests;
 			sourceTree = "<group>";
@@ -228,6 +233,7 @@
 		6E7AE5C71C4F3CB9007B1736 /* OpenGL */ = {
 			isa = PBXGroup;
 			children = (
+				6E8B7C3F1C51445E00296E6A /* OpenGLMathType.swift */,
 				6E7AE5AD1C4EB852007B1736 /* Vector2.swift */,
 				6E8B7C2F1C508E3A00296E6A /* Vector3.swift */,
 				6E8B7C351C50B5CD00296E6A /* Vector4.swift */,
@@ -365,6 +371,7 @@
 				6E8B7C2C1C50666900296E6A /* Matrix3.swift in Sources */,
 				6E7AE5A91C4EAD54007B1736 /* Matrix.swift in Sources */,
 				6E7AE5AE1C4EB852007B1736 /* Vector2.swift in Sources */,
+				6E8B7C401C51445E00296E6A /* OpenGLMathType.swift in Sources */,
 				6E7AE5AB1C4EB5AE007B1736 /* Float.swift in Sources */,
 				6E0E2B1E1C4E088F00A73965 /* UIViewController.swift in Sources */,
 				6E0E2B0E1C4DF8D000A73965 /* Context.swift in Sources */,
@@ -379,6 +386,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E8B7C3E1C513E4A00296E6A /* MathTests.swift in Sources */,
 				6E7AE5C41C4F3AA5007B1736 /* main.swift in Sources */,
 				6E7AE5C61C4F3AD7007B1736 /* ColorTests.swift in Sources */,
 			);

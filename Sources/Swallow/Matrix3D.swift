@@ -11,6 +11,8 @@
 /// including translation (repositioning along the x, y, and z axes), rotation, and scaling (resizing).
 public struct Matrix3D {
     
+    // MARK: - Properties
+    
     public var matrix: Matrix4
     
     
