@@ -41,6 +41,7 @@
 		6E8B7C3E1C513E4A00296E6A /* MathTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E8B7C3C1C513DDE00296E6A /* MathTests.swift */; };
 		6E8B7C401C51445E00296E6A /* OpenGLMathType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E8B7C3F1C51445E00296E6A /* OpenGLMathType.swift */; };
 		6E8B7C431C51505800296E6A /* Matrix4Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E8B7C411C51500600296E6A /* Matrix4Tests.swift */; };
+		6EE1722A1C517AFE005D65D8 /* OpenGLError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE172291C517AFE005D65D8 /* OpenGLError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +93,7 @@
 		6E8B7C3C1C513DDE00296E6A /* MathTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MathTests.swift; sourceTree = "<group>"; };
 		6E8B7C3F1C51445E00296E6A /* OpenGLMathType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenGLMathType.swift; sourceTree = "<group>"; };
 		6E8B7C411C51500600296E6A /* Matrix4Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Matrix4Tests.swift; sourceTree = "<group>"; };
+		6EE172291C517AFE005D65D8 /* OpenGLError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenGLError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -242,6 +244,7 @@
 				6E8B7C351C50B5CD00296E6A /* Vector4.swift */,
 				6E8B7C2B1C50666900296E6A /* Matrix3.swift */,
 				6E8B7C2D1C50840900296E6A /* Matrix4.swift */,
+				6EE172291C517AFE005D65D8 /* OpenGLError.swift */,
 			);
 			name = OpenGL;
 			sourceTree = "<group>";
@@ -380,6 +383,7 @@
 				6E0E2B0E1C4DF8D000A73965 /* Context.swift in Sources */,
 				6E8B7C321C50A55300296E6A /* Matrix3D.swift in Sources */,
 				6E7AE5C81C4F3F5F007B1736 /* Framebuffer.swift in Sources */,
+				6EE1722A1C517AFE005D65D8 /* OpenGLError.swift in Sources */,
 				6E8B7C301C508E3A00296E6A /* Vector3.swift in Sources */,
 				6E7AE5B01C4EC11C007B1736 /* ScaleMode.swift in Sources */,
 			);

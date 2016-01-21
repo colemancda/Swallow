@@ -32,8 +32,6 @@ final class Matrix4Tests: XCTestCase {
                 let glkResult = GLKMatrix4Multiply(matrix1.toUIKit(), matrix2.toUIKit())
                 
                 XCTAssert(Matrix4(glkResult) == result)
-                
-                print(result)
             }
             
         #endif
