@@ -38,15 +38,7 @@ public struct VertexData {
     
     public private(set) var vertices: [Vertex]
     
-    public var premultipliedAlpha: Bool {
-        
-        willSet {
-            
-            guard newValue != premultipliedAlpha else { return }
-            
-            self.updateVertices()
-        }
-    }
+    public var premultipliedAlpha: Bool
     
     public var tinted: Bool {
         
@@ -211,7 +203,23 @@ public struct VertexData {
         }
     }
     
+    public mutating func append(vertex: Vertex) {
+        
+        var vertex = vertex
+        
+        if premultipliedAlpha { vertex.color.premultiplyAlpha() }
+        
+        self.vertices.append(vertex)
+    }
     
+    public func transform(matrix: Matrix, atIndex index: Int, count: Int) {
+        
+        assert(!(index < 0 || index + count > self.vertices.count), "Invalid Index Range")
+        
+        let glMatrix = matrix.toMatrix3()
+        
+        
+    }
 }
 
 // MARK: - Private
