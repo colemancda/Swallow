@@ -122,3 +122,24 @@ public struct Matrix3 {
     }
 }
 
+// MARK: - Darwin Support
+
+#if os(iOS) || os(tvOS)
+    
+    import GLKit
+    
+    extension Matrix3: UIKitConvertible {
+        
+        public init(_ GLKitValue: GLKMatrix3) {
+            
+            self.value = GLKitValue.m
+        }
+        
+        public func toUIKit() -> GLKMatrix3 {
+            
+            return GLKMatrix3(m: self.value)
+        }
+    }
+    
+#endif
+

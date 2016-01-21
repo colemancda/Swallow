@@ -183,3 +183,25 @@ public struct Matrix4 {
         }
     }
 }
+
+// MARK: - Darwin Support
+
+#if os(iOS) || os(tvOS)
+    
+    import GLKit
+    
+    extension Matrix4: UIKitConvertible {
+        
+        public init(_ GLKitValue: GLKMatrix4) {
+            
+            self.value = GLKitValue.m
+        }
+        
+        public func toUIKit() -> GLKMatrix4 {
+            
+            return GLKMatrix4(m: self.value)
+        }
+    }
+    
+#endif
+
