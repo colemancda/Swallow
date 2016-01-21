@@ -15,6 +15,7 @@ public struct Vector3 {
     
     // MARK: - Initialization
     
+    @inline(__always)
     public init(_ x: Float, _ y: Float, _ z: Float) {
         
         self.value = (x, y, z)
@@ -24,45 +25,45 @@ public struct Vector3 {
     
     public var x: Float {
         
-        get { return value.0 }
-        set { value.0 = newValue }
+        @inline(__always) get { return value.0 }
+        @inline(__always) set { value.0 = newValue }
     }
     
     public var y: Float {
         
-        get { return value.1 }
-        set { value.1 = newValue }
+        @inline(__always) get { return value.1 }
+        @inline(__always) set { value.1 = newValue }
     }
     
     public var z: Float {
         
-        get { return value.2 }
-        set { value.2 = newValue }
+        @inline(__always) get { return value.2 }
+        @inline(__always) set { value.2 = newValue }
     }
     
     public var s: Float {
         
-        get { return value.0 }
-        set { value.0 = newValue }
+        @inline(__always) get { return value.0 }
+        @inline(__always) set { value.0 = newValue }
     }
     
     public var t: Float {
         
-        get { return value.1 }
-        set { value.1 = newValue }
+        @inline(__always) get { return value.1 }
+        @inline(__always) set { value.1 = newValue }
     }
     
     public var p: Float {
         
-        get { return value.2 }
-        set { value.2 = newValue }
+        @inline(__always) get { return value.2 }
+        @inline(__always) set { value.2 = newValue }
     }
     
     // MARK: - Subscripting
     
     public subscript (index: Int) -> Float {
         
-        get {
+        @inline(__always) get {
             
             switch index {
                 
@@ -74,7 +75,7 @@ public struct Vector3 {
             }
         }
         
-        set {
+        @inline(__always) set {
             
             switch index {
                 
