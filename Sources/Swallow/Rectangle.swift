@@ -105,7 +105,7 @@ public struct Rectangle: Equatable, Hashable {
         
         for i in 0 ..< 4 {
             
-            let transformedPoint = matrix.tranform(Point(x: width * positions[i].x, y: height * positions[i].y))
+            let transformedPoint = matrix.transform(Point(x: width * positions[i].x, y: height * positions[i].y))
             
             if (minX > transformedPoint.x) { minX = transformedPoint.x }
             if (maxX < transformedPoint.x) { maxX = transformedPoint.x }
