@@ -6,8 +6,6 @@
 //  Copyright © 2016 PureSwift. All rights reserved.
 //
 
-// MARK: - Epsilon Equality
-
 public extension Float {
     
     static var epsilon: Float { return 0.0001 }
@@ -16,14 +14,14 @@ public extension Float {
         
         return fabsf(self - rhs) < Float.epsilon
     }
-}
-
-// MARK: - Square
-
-public extension Float {
     
     var square: Float {
         
         return self * self
+    }
+    
+    func clamp(min minValue: Float, max maxValue: Float) -> Float {
+        
+        return min(maxValue, max(self, minValue))
     }
 }
