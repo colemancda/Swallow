@@ -40,7 +40,9 @@ public struct VertexData {
     
     public var premultipliedAlpha: Bool {
         
-        didSet {
+        willSet {
+            
+            guard newValue != premultipliedAlpha else { return }
             
             self.updateVertices()
         }
@@ -115,6 +117,70 @@ public struct VertexData {
         self.vertices[index].position = position.vector
     }
     
+    public func textureCoordinatesAtIndex(index: Int) -> Point {
+        
+        return Point(vector: self.vertices[index].textureCoordinates)
+    }
+    
+    public mutating func setTextureCoordinates(coordinates: Point, atIndex index: Int) {
+        
+        self.vertices[index].textureCoordinates = coordinates.vector
+    }
+    
+    public mutating func setColor(color: Color, alpha: Float? = nil, atIndex index: Int) {
+        
+        let alpha = (alpha ?? self.alphaAtIndex(index)).clamp(min: premultipliedAlpha ? MinimumAlpha : 0.0, max: 1.0)
+        
+        var vertexColor = VertexColor(color: color, alpha: alpha)
+        
+        if premultipliedAlpha {
+            
+            vertexColor.premultiplyAlpha()
+        }
+        
+        self.vertices[index].color = vertexColor
+    }
+    
+    public mutating func setColor(color: Color, alpha: Float? = nil) {
+        
+        for index in 0 ..< vertices.count {
+            
+            self.setColor(color, alpha: alpha, atIndex: index)
+        }
+    }
+    
+    public func colorAtIndex(index: Int) -> Color {
+        
+        var vertexColor = self.vertices[index].color
+        
+        if premultipliedAlpha { vertexColor.unmultiplyAlpha() }
+        
+        return Color(red: vertexColor.red, green: vertexColor.green, blue: vertexColor.blue)
+    }
+    
+    public mutating func setAlpha(alpha: Float, atIndex index: Int) {
+        
+        let color = self.colorAtIndex(index)
+        self.setColor(color, alpha: alpha, atIndex: index)
+    }
+    
+    public mutating func setAlpha(alpha: Float) {
+        
+        for index in 0 ..< vertices.count {
+            
+            self.setAlpha(alpha, atIndex: index)
+        }
+    }
+    
+    public func alphaAtIndex(index: Int) -> Float {
+        
+        return Float(self.vertices[index].color.alpha) / 255
+    }
     
 }
+
+// MARK: - Private
+
+private let MinimumAlpha = Float(5.0 / 255.0)
+
 
