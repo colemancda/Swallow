@@ -190,6 +190,7 @@ public struct Matrix4 {
 
 public extension Matrix4 {
     
+    @inline(__always)
     public mutating func multiply(lhs: Matrix4) {
         
         var m = Matrix4.Identity
