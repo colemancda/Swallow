@@ -30,6 +30,8 @@ public struct Matrix4 {
                       m3.0, m3.1, m3.2, m3.3)
     }
     
+    public static let Identity = Matrix4((0,0,0,0), (0,0,0,0), (0,0,0,0), (0,0,0,0))
+    
     // MARK: - Accessors
     
     public var m00: Float {

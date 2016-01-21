@@ -47,7 +47,7 @@ public struct Matrix {
     
     // MARK: - Methods
     
-    func tranform(point: Point) -> Point {
+    func transform(point: Point) -> Point {
         
         return Point(x: a * point.x + c * point.y + translation.x, y: b * point.x + d * point.y + translation.y)
     }
@@ -58,4 +58,20 @@ public struct Matrix {
                        (c, d, 0.0),
                        (translation.x, translation.y, 1.0))
     }
+    
+    func toMatrix4() -> Matrix4 {
+        
+        var matrix = Matrix4.Identity
+        
+        matrix.m00 = a
+        matrix.m01 = b
+        matrix.m10 = c
+        matrix.m11 = d
+        matrix.m30 = translation.x
+        matrix.m31 = translation.y
+        
+        return matrix
+    }
+    
+    
 }

@@ -50,6 +50,11 @@ public struct VertexData {
         return false
     }
     
+    public var bounds: Rectangle {
+        
+        return self.boundsAfterTransformation()
+    }
+    
     // MARK: - Initialization
     
     public init(vertices: [Vertex] = [], premultipliedAlpha: Bool = false) {
@@ -212,13 +217,84 @@ public struct VertexData {
         self.vertices.append(vertex)
     }
     
-    public func transform(matrix: Matrix, atIndex index: Int, count: Int) {
+    public mutating func transform(matrix: Matrix, atIndex index: Int, count: Int) {
         
         assert(!(index < 0 || index + count > self.vertices.count), "Invalid Index Range")
         
         let glMatrix = matrix.toMatrix3()
         
+        for i in 0 ..< (index + count) {
+            
+            let pos = vertices[i].position
+            
+            vertices[i].position.x = glMatrix.m00 * pos.x + glMatrix.m10 * pos.y + glMatrix.m20
+            vertices[i].position.y = glMatrix.m11 * pos.y + glMatrix.m01 * pos.x + glMatrix.m21
+        }
+    }
+    
+    public func boundsAfterTransformation(matrix: Matrix? = nil, index: Int = 0, count: Int? = nil) -> Rectangle {
         
+        let count = count ?? self.vertices.count
+        
+        assert(!(index < 0 || index + count > self.vertices.count), "Invalid Index Range")
+        
+        var minX = FLT_MAX, maxX = -FLT_MAX, minY = FLT_MAX, maxY = -FLT_MAX
+        
+        let endIndex = index + count
+        
+        // Count == 0
+        guard count != 0 else {
+            
+            let point: Point
+            
+            if let matrix = matrix {
+                
+                point = matrix.transform(Point())
+                
+            } else {
+                
+                point = Point()
+            }
+            
+            return Rectangle(x: point.x, y: point.y, width: 0, height: 0)
+        }
+        
+        // transformation matrix
+        if let matrix = matrix {
+            
+            for i in 0 ..< endIndex {
+                
+                let position = self.vertices[i].position
+                
+                let transformedPoint = matrix.transform(Point(vector: position))
+                
+                let tfX = transformedPoint.x
+                let tfY = transformedPoint.y
+                
+                minX = min(minX, tfX)
+                maxX = max(maxX, tfX)
+                minY = min(minY, tfY)
+                maxY = max(maxY, tfY)
+            }
+            
+        }
+        
+        // no transformation matrix
+        else {
+            
+            
+            for i in 0 ..< endIndex {
+                
+                let position = self.vertices[i].position
+                
+                minX = min(minX, position.x)
+                maxX = max(maxX, position.x)
+                minY = min(minY, position.y)
+                maxY = max(maxY, position.y)
+            }
+        }
+        
+        return Rectangle(x: minX, y: minY, width: maxX - minX, height: maxY - minY)
     }
 }
 

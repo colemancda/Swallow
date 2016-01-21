@@ -9,15 +9,21 @@
 /// Describes a two dimensional point or vector.
 public struct Point {
     
+    // MARK: - Properties
+    
     public var x: Float
     
     public var y: Float
+    
+    // MARK: - Intialization
     
     public init(x: Float = 0, y: Float = 0) {
         
         self.x = x
         self.y = y
     }
+    
+    // MARK: - Conversion
     
     public init(vector: Vector2) {
         
