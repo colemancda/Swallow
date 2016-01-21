@@ -34,6 +34,7 @@
 		6E7AE5C81C4F3F5F007B1736 /* Framebuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0E2B131C4DFAF600A73965 /* Framebuffer.swift */; };
 		6E8B7C2C1C50666900296E6A /* Matrix3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E8B7C2B1C50666900296E6A /* Matrix3.swift */; };
 		6E8B7C2E1C50840900296E6A /* Matrix4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E8B7C2D1C50840900296E6A /* Matrix4.swift */; };
+		6E8B7C301C508E3A00296E6A /* Vector3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E8B7C2F1C508E3A00296E6A /* Vector3.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +79,7 @@
 		6E7AE5C51C4F3AD7007B1736 /* ColorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorTests.swift; sourceTree = "<group>"; };
 		6E8B7C2B1C50666900296E6A /* Matrix3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Matrix3.swift; sourceTree = "<group>"; };
 		6E8B7C2D1C50840900296E6A /* Matrix4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Matrix4.swift; sourceTree = "<group>"; };
+		6E8B7C2F1C508E3A00296E6A /* Vector3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vector3.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -219,6 +221,7 @@
 			isa = PBXGroup;
 			children = (
 				6E7AE5AD1C4EB852007B1736 /* Vector2.swift */,
+				6E8B7C2F1C508E3A00296E6A /* Vector3.swift */,
 				6E8B7C2B1C50666900296E6A /* Matrix3.swift */,
 				6E8B7C2D1C50840900296E6A /* Matrix4.swift */,
 			);
@@ -355,6 +358,7 @@
 				6E0E2B1E1C4E088F00A73965 /* UIViewController.swift in Sources */,
 				6E0E2B0E1C4DF8D000A73965 /* Context.swift in Sources */,
 				6E7AE5C81C4F3F5F007B1736 /* Framebuffer.swift in Sources */,
+				6E8B7C301C508E3A00296E6A /* Vector3.swift in Sources */,
 				6E7AE5B01C4EC11C007B1736 /* ScaleMode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
