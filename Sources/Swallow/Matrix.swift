@@ -51,4 +51,11 @@ public struct Matrix {
         
         return Point(x: a * point.x + c * point.y + translation.x, y: b * point.x + d * point.y + translation.y)
     }
+    
+    func toMatrix3() -> Matrix3 {
+        
+        return Matrix3((a, b, 0.0),
+                       (c, d, 0.0),
+                       (translation.x, translation.y, 1.0))
+    }
 }

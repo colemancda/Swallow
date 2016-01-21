@@ -1,27 +1,33 @@
 //
-//  Matrix3.swift
+//  Matrix4.swift
 //  Swallow
 //
 //  Created by Alsey Coleman Miller on 1/20/16.
 //  Copyright © 2016 PureSwift. All rights reserved.
 //
 
-/// A 3x3 matrix stored in column-major order.
-public struct Matrix3 {
+/** A 4x4 matrix.
+
+- Note: m30, m31, and m32 correspond to the translation values tx, ty, and tz, respectively.
+m[12], m[13], and m[14] correspond to the translation values tx, ty, and tz, respectively.
+*/
+public struct Matrix4 {
     
     // MARK: - Value
     
-    public var value: (Float, Float, Float, Float, Float, Float, Float, Float, Float)
+    public var value: (Float, Float, Float, Float, Float, Float, Float, Float, Float, Float, Float, Float, Float, Float, Float, Float)
     
     // MARK: - Initialization
     
-    public init(_ m0: (Float, Float, Float),
-                _ m1: (Float, Float, Float),
-                _ m2: (Float, Float, Float))
+    public init(_ m0: (Float, Float, Float, Float),
+                _ m1: (Float, Float, Float, Float),
+                _ m2: (Float, Float, Float, Float),
+                _ m3: (Float, Float, Float, Float))
     {
-        self.value = (m0.0, m0.1, m0.2,
-                      m1.0, m1.1, m1.2,
-                      m2.0, m2.1, m2.2)
+        self.value = (m0.0, m0.1, m0.2, m0.3,
+                      m1.0, m1.1, m1.2, m1.3,
+                      m2.0, m2.1, m2.2, m2.3,
+                      m3.0, m3.1, m3.2, m3.3)
     }
     
     // MARK: - Accessors
@@ -121,4 +127,3 @@ public struct Matrix3 {
         }
     }
 }
-

@@ -48,6 +48,8 @@ public struct Vector2 {
         set { value.1 = newValue }
     }
     
+    // MARK: - Subscripting
+    
     public subscript (index: Int) -> Float {
         
         get {
