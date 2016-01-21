@@ -50,40 +50,82 @@ public struct Matrix4 {
         set { value.2 = newValue }
     }
     
-    public var m10: Float {
+    public var m03: Float {
         
         get { return value.3 }
         set { value.3 = newValue }
     }
     
-    public var m11: Float {
+    public var m10: Float {
         
         get { return value.4 }
         set { value.4 = newValue }
     }
     
-    public var m12: Float {
+    public var m11: Float {
         
         get { return value.5 }
         set { value.5 = newValue }
     }
     
-    public var m20: Float {
+    public var m12: Float {
         
         get { return value.6 }
         set { value.6 = newValue }
     }
     
-    public var m21: Float {
+    public var m13: Float {
         
         get { return value.7 }
         set { value.7 = newValue }
     }
     
-    public var m22: Float {
+    public var m20: Float {
         
         get { return value.8 }
         set { value.8 = newValue }
+    }
+    
+    public var m21: Float {
+        
+        get { return value.9 }
+        set { value.9 = newValue }
+    }
+    
+    public var m22: Float {
+        
+        get { return value.10 }
+        set { value.10 = newValue }
+    }
+    
+    public var m23: Float {
+        
+        get { return value.11 }
+        set { value.11 = newValue }
+    }
+    
+    public var m30: Float {
+        
+        get { return value.12 }
+        set { value.12 = newValue }
+    }
+    
+    public var m31: Float {
+        
+        get { return value.13 }
+        set { value.13 = newValue }
+    }
+    
+    public var m32: Float {
+        
+        get { return value.14 }
+        set { value.14 = newValue }
+    }
+    
+    public var m33: Float {
+        
+        get { return value.15 }
+        set { value.15 = newValue }
     }
     
     // MARK: - Subscripting
@@ -94,15 +136,22 @@ public struct Matrix4 {
             
             switch index {
                 
-            case 0: return value.0
-            case 1: return value.1
-            case 2: return value.2
-            case 3: return value.3
-            case 4: return value.4
-            case 5: return value.5
-            case 6: return value.6
-            case 7: return value.7
-            case 8: return value.8
+            case  0: return value.0
+            case  1: return value.1
+            case  2: return value.2
+            case  3: return value.3
+            case  4: return value.4
+            case  5: return value.5
+            case  6: return value.6
+            case  7: return value.7
+            case  8: return value.8
+            case  9: return value.9
+            case 10: return value.10
+            case 11: return value.11
+            case 12: return value.12
+            case 13: return value.13
+            case 14: return value.14
+            case 15: return value.15
                 
             default: fatalError("Invalid index \(index)")
             }
@@ -112,15 +161,22 @@ public struct Matrix4 {
             
             switch index {
                 
-            case 0: value.0 = newValue
-            case 1: value.1 = newValue
-            case 2: value.2 = newValue
-            case 3: value.3 = newValue
-            case 4: value.4 = newValue
-            case 5: value.5 = newValue
-            case 6: value.6 = newValue
-            case 7: value.7 = newValue
-            case 8: value.8 = newValue
+            case  0: value.0  = newValue
+            case  1: value.1  = newValue
+            case  2: value.2  = newValue
+            case  3: value.3  = newValue
+            case  4: value.4  = newValue
+            case  5: value.5  = newValue
+            case  6: value.6  = newValue
+            case  7: value.7  = newValue
+            case  8: value.8  = newValue
+            case  9: value.9  = newValue
+            case 10: value.10 = newValue
+            case 11: value.11 = newValue
+            case 12: value.12 = newValue
+            case 13: value.13 = newValue
+            case 14: value.14 = newValue
+            case 15: value.15 = newValue
                 
             default: fatalError("Invalid index \(index)")
             }
