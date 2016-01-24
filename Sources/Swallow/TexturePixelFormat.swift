@@ -22,9 +22,6 @@ public extension Texture {
         /// 8-bit texture used as mask
         case A8
         
-        /// 8-bit intensity texture
-        case I8
-        
         /// 16-bit texture used as mask
         case AI88
         
@@ -45,22 +42,50 @@ public extension Texture {
 
 internal extension Texture.PixelFormat {
     
-    var internalFormat: GLint {
+    var glTexImage2D: (internalFormat: GLint, format: GLenum, type: GLenum) {
         
-        let value: CInt
+        let internalFormat: CInt
+        let format: CInt
+        let type: CInt
         
         switch self {
             
-        case .RGBA8888: value = GL_RGBA
-        case .BGRA8888: value = GL_RGBA
-        case .RGBA4444: value = GL_RGBA
-        case .RGB5A1:   value = GL_RGBA
-        case .RGB565:   value = GL_RGB
-        //case .RGB888:   value = GL_RGB // not availible
-        case .AI88:     value = GL_LUMINANCE_ALPHA
-        case .A8:       value = GL_ALPHA
+        case .RGBA8888:
+            internalFormat = GL_RGBA
+            format = GL_RGBA
+            type = GL_UNSIGNED_BYTE
+            
+        case .BGRA8888:
+            internalFormat = GL_RGBA
+            format = GL_BGRA
+            type = GL_UNSIGNED_BYTE
+            
+        case .RGBA4444:
+            internalFormat = GL_RGBA
+            format = GL_RGBA
+            type = GL_UNSIGNED_SHORT_4_4_4_4
+            
+        case .RGB5A1:
+            internalFormat = GL_RGBA
+            format = GL_RGBA
+            type = GL_UNSIGNED_SHORT_5_5_5_1
+            
+        case .RGB565:
+            internalFormat = GL_RGB
+            format = GL_RGB
+            type = GL_UNSIGNED_SHORT_5_6_5
+            
+        case .AI88:
+            internalFormat = GL_LUMINANCE_ALPHA
+            format = GL_LUMINANCE_ALPHA
+            type = GL_UNSIGNED_BYTE
+            
+        case .A8:
+            internalFormat = GL_ALPHA
+            format = GL_ALPHA
+            type = GL_UNSIGNED_BYTE
         }
         
-        return GLint(value)
+        return (GLint(internalFormat), GLenum(format), GLenum(type))
     }
 }

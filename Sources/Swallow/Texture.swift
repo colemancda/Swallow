@@ -20,9 +20,25 @@ public struct Texture {
     
     public let name: GLuint
     
+    public let pixelFormat: PixelFormat
+    
+    /// Size in pixels.
+    public let pixelSize: (width: UInt, height: UInt)
+    
+    /// Content size of the texture in points.
+    public var contentSize: Size {
+        
+        var size = Size()
+        
+        size.width = sizeInPixels
+    }
+    
+    /// Content size of the texture in pixels.
+    public let pixelContentSize: Size
+    
     // MARK: - Initialization
     
-    public init(data: [UInt8], pixelFormat: PixelFormat = PixelFormat(), pixelSize: (width: UInt, height: UInt), contentSize: Size) {
+    public init(data: [UInt8], pixelFormat: PixelFormat = PixelFormat(), pixelSize: (width: UInt, height: UInt), pixelContentSize: Size) {
         
         // FIXME: 32 bits or POT textures uses UNPACK of 4 (is this correct ??? )
         if pixelFormat == .RGBA8888 || pixelFormat == .BGRA8888 || (pixelSize.width.nextPowerOfTwo == pixelSize.width && pixelSize.height.nextPowerOfTwo == pixelSize.height) {
@@ -48,19 +64,15 @@ public struct Texture {
         
         // Specify OpenGL texture image
         
-        let glInternalFormat: CInt
+        let glPixelFormat = pixelFormat.glTexImage2D
         
-        let glFormat: CInt
+        glTexImage2D(GLenum(GL_TEXTURE_2D), 0, glPixelFormat.internalFormat, GLsizei(pixelSize.width), GLsizei(pixelSize.height), 0, glPixelFormat.format, glPixelFormat.type, data)
         
-        let glType: CInt
+        // Set values
         
-        switch pixelFormat {
-            
-        case .RGBA8888: glFormat = GL_RGBA; glType = GL_UNSIGNED_BYTE
-            
-        case .BGRA8888: glFormat = GL_RGBA; glType = GL_UNSIGNED_BYTE
-            
-        case .RGBA4444: glFormat = GL_RGBA; glType = GL_UNSIGNED_BYTE
-        }
+        self.name = name
+        self.pixelContentSize = pixelContentSize
+        self.pixelSize =
     }
 }
+
