@@ -25,20 +25,26 @@ public struct Texture {
     /// Size in pixels.
     public let pixelSize: (width: UInt, height: UInt)
     
+    /// Content size of the texture in pixels.
+    public let pixelContentSize: Size // contentSizeInPixels
+    
     /// Content size of the texture in points.
     public var contentSize: Size {
         
         var size = Size()
         
-        size.width = sizeInPixels
+        size.width = pixelContentSize.width / contentScale
+        
+        size.height = pixelContentSize.height / contentScale
+        
+        return size
     }
     
-    /// Content size of the texture in pixels.
-    public let pixelContentSize: Size
+    public var contentScale: Float
     
     // MARK: - Initialization
     
-    public init(data: [UInt8], pixelFormat: PixelFormat = PixelFormat(), pixelSize: (width: UInt, height: UInt), pixelContentSize: Size) {
+    public init(data: [UInt8], pixelFormat: PixelFormat = PixelFormat(), pixelSize: (width: UInt, height: UInt), pixelContentSize: Size, contentScale: Float) {
         
         // FIXME: 32 bits or POT textures uses UNPACK of 4 (is this correct ??? )
         if pixelFormat == .RGBA8888 || pixelFormat == .BGRA8888 || (pixelSize.width.nextPowerOfTwo == pixelSize.width && pixelSize.height.nextPowerOfTwo == pixelSize.height) {
@@ -55,7 +61,7 @@ public struct Texture {
         glGenTextures(1, &name)
         glBindTexture(GLenum(GL_TEXTURE_2D), name)
         
-        assert(name != 0)
+        assert(name != 0, "Could not create OpenGL texture")
         
         glTexParameteri(GLenum(GL_TEXTURE_2D), GLenum(GL_TEXTURE_MIN_FILTER), GLint(GL_LINEAR))
         glTexParameteri(GLenum(GL_TEXTURE_2D), GLenum(GL_TEXTURE_MAG_FILTER), GLint(GL_LINEAR))
@@ -72,7 +78,25 @@ public struct Texture {
         
         self.name = name
         self.pixelContentSize = pixelContentSize
-        self.pixelSize =
+        self.pixelFormat = pixelFormat
+        self.pixelSize = pixelSize
+        self.contentScale = contentScale
     }
+    
+    /// Creates an empty Texture
+    private init() {
+        
+        self.name = 0
+        self.pixelFormat = .RGBA8888
+        self.pixelSize = (0,0) // width, height
+        self.pixelContentSize = Size() // sizeInPixels
+        self.contentScale = 1.0
+    }
+    
+    public static let none = Texture()
+    
+    // MARK: - Methods
+    
+    
 }
 

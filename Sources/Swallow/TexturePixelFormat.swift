@@ -34,6 +34,7 @@ public extension Texture {
         /// 32-bit texture: BGRA8888
         case BGRA8888
         
+        /// Intializes to the default case RGBA8888. 
         public init() { self = .RGBA8888 }
     }
 }
