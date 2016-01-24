@@ -45,41 +45,22 @@ public final class Context {
     
     public func clear(red red: Float, green: Float, blue: Float, alpha: Float, depth: Float = 1, stencil: UInt = 0, mask: [ClearMask] = []) {
         
-        Capability.
-        
-        let scissorEnabled = glIsEnabled(GLenum(GL_SCISSOR_TEST))
+        let scissorEnabled = Capability.ScissorTest.enabled
         
         if scissorEnabled {
             
-            glDisable(GLenum(GL_SCISSOR_TEST))
+            Capability.ScissorTest.disable()
         }
         
         glClearColor(red, green, blue, alpha)
         glClearDepthf(depth)
         glClearStencil(GLint(stencil))
         
-        var glMask: GLbitfield = 0
-        
-        if mask.contains(.Color) {
-            
-            glMask |= GLbitfield(GL_COLOR_BUFFER_BIT)
-        }
-        
-        if mask.contains(.Depth) {
-            
-            glMask |= GLbitfield(GL_DEPTH_BUFFER_BIT)
-        }
-        
-        if mask.contains(.Stencil) {
-            
-            glMask |= GLbitfield(GL_STENCIL_BUFFER_BIT)
-        }
-        
-        glClear(glMask)
+        ClearMask.clear(mask)
         
         if scissorEnabled {
             
-            glEnable(GLenum(GL_SCISSOR_TEST))
+            Capability.ScissorTest.enable()
         }
     }
     

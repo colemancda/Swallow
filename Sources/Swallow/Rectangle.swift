@@ -118,13 +118,17 @@ public struct Rectangle: Equatable, Hashable {
         return Rectangle(x: minX, y: minY, width: maxX - minX, height:  maxY - minY)
     }
     
-    public mutating func inflate(dx: Float, dy: Float) {
+    public func inflate(dx: Float, dy: Float) -> Rectangle {
         
-        x -= dx
-        width += 2 * dx
+        var rect = self
         
-        y -= dy
-        height += 2 * dy
+        rect.x -= dx
+        rect.width += 2 * dx
+        
+        rect.y -= dy
+        rect.height += 2 * dy
+        
+        return rect
     }
     
     public func fit(into: Rectangle, scaleMode: ScaleMode = .None, pixelPerfect: Bool) -> Rectangle {
@@ -154,18 +158,26 @@ public struct Rectangle: Equatable, Hashable {
         return Rectangle(x: into.x + (into.width - width) / 2, y: into.y + (into.height - height) / 2, width: width, height: height)
     }
     
-    public mutating func scale(scale: Float) {
+    public func scale(scale: Float) -> Rectangle {
         
-        self.x *= scale;
-        self.y *= scale;
-        self.width *= scale;
-        self.height *= scale;
+        var rect = self
+        
+        rect.x *= scale
+        rect.y *= scale
+        rect.width *= scale
+        rect.height *= scale
+        
+        return rect
     }
     
-    public mutating func scaleSize(scale: Float) {
+    public func scaleSize(scale: Float) -> Rectangle {
         
-        self.width *= scale;
-        self.height *= scale;
+        var rect = self
+        
+        rect.width *= scale
+        rect.height *= scale
+        
+        return rect
     }
     
     public mutating func setEmpty() {
@@ -173,19 +185,23 @@ public struct Rectangle: Equatable, Hashable {
         self = Rectangle()
     }
     
-    public mutating func normalize() {
+    public func normalize() -> Rectangle {
         
-        if (self.width < 0.0)
+        var rect = self
+        
+        if (rect.width < 0.0)
         {
-            self.width = -self.width;
-            self.x -= self.width;
+            rect.width = -rect.width
+            rect.x -= rect.width
         }
         
-        if (self.height < 0.0)
+        if (rect.height < 0.0)
         {
-            self.height = -self.height;
-            self.y -= self.height;
+            rect.height = -rect.height
+            rect.y -= rect.height
         }
+        
+        return rect
     }
 }
 
@@ -205,10 +221,10 @@ extension Rectangle: AlmostEquatable {
     
     public func almostEqual(rhs: Rectangle, tolerance: Float = FloatEpsilon) -> Bool {
         
-        return lhs.x.almostEqual(rhs.x)
-            && lhs.y.almostEqual(rhs.y)
-            && lhs.width.almostEqual(rhs.width)
-            && lhs.height.almostEqual(rhs.height)
+        return self.x.almostEqual(rhs.x)
+            && self.y.almostEqual(rhs.y)
+            && self.width.almostEqual(rhs.width)
+            && self.height.almostEqual(rhs.height)
     }
 }
 
