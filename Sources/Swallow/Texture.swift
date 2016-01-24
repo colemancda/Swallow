@@ -23,10 +23,12 @@ public struct Texture {
     public let pixelFormat: PixelFormat
     
     /// Size in pixels.
-    public let pixelSize: (width: UInt, height: UInt)
+    public let dataSize: (width: UInt, height: UInt)
     
     /// Content size of the texture in pixels.
-    public let pixelContentSize: Size // contentSizeInPixels
+    public let pixelContentSize: Size
+    
+    public let premultipliedAlpha: Bool
     
     /// Content size of the texture in points.
     public var contentSize: Size {
@@ -44,10 +46,10 @@ public struct Texture {
     
     // MARK: - Initialization
     
-    public init(data: [UInt8], pixelFormat: PixelFormat = PixelFormat(), pixelSize: (width: UInt, height: UInt), pixelContentSize: Size, contentScale: Float) {
+    public init(data: [UInt8], pixelFormat: PixelFormat = PixelFormat(), dataSize: (width: UInt, height: UInt), pixelContentSize: Size, contentScale: Float) {
         
         // FIXME: 32 bits or POT textures uses UNPACK of 4 (is this correct ??? )
-        if pixelFormat == .RGBA8888 || pixelFormat == .BGRA8888 || (pixelSize.width.nextPowerOfTwo == pixelSize.width && pixelSize.height.nextPowerOfTwo == pixelSize.height) {
+        if pixelFormat == .RGBA8888 || pixelFormat == .BGRA8888 || (dataSize.width.nextPowerOfTwo == dataSize.width && dataSize.height.nextPowerOfTwo == dataSize.height) {
             
             glPixelStorei(GLenum(GL_UNPACK_ALIGNMENT), 4)
         
@@ -72,15 +74,17 @@ public struct Texture {
         
         let glPixelFormat = pixelFormat.glTexImage2D
         
-        glTexImage2D(GLenum(GL_TEXTURE_2D), 0, glPixelFormat.internalFormat, GLsizei(pixelSize.width), GLsizei(pixelSize.height), 0, glPixelFormat.format, glPixelFormat.type, data)
+        glTexImage2D(GLenum(GL_TEXTURE_2D), 0, glPixelFormat.internalFormat, GLsizei(dataSize.width), GLsizei(dataSize.height), 0, glPixelFormat.format, glPixelFormat.type, data)
         
         // Set values
         
         self.name = name
         self.pixelContentSize = pixelContentSize
         self.pixelFormat = pixelFormat
-        self.pixelSize = pixelSize
+        self.dataSize = dataSize
         self.contentScale = contentScale
+        
+        self.premultipliedAlpha = false
     }
     
     /// Creates an empty Texture
