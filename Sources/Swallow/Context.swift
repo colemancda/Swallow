@@ -43,7 +43,7 @@ public final class Context {
     
     // MARK: - Methods
     
-    public func clear(red red: Float, green: Float, blue: Float, alpha: Float, depth: Float = 1, stencil: UInt = 0, mask: [ClearMask] = []) {
+    public func clear(red red: Float, green: Float, blue: Float, alpha: Float, depth: Float = 1, stencil: UInt = 0, mask: [ClearMask] = [.Color, .Depth, .Stencil]) {
         
         let scissorEnabled = Capability.ScissorTest.enabled
         
