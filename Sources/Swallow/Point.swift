@@ -6,6 +6,8 @@
 //  Copyright © 2016 PureSwift. All rights reserved.
 //
 
+import Kronos
+
 /// Describes a two dimensional point or vector.
 public struct Point {
     

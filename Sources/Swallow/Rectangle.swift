@@ -6,6 +6,8 @@
 //  Copyright © 2016 PureSwift. All rights reserved.
 //
 
+import Kronos
+
 #if os(iOS) || os(tvOS)
     import Darwin.C
 #elseif os(Linux)
@@ -191,10 +193,23 @@ public struct Rectangle: Equatable, Hashable {
 
 public func == (lhs: Rectangle, rhs: Rectangle) -> Bool {
     
-    return lhs.x.epsilonEqual(rhs.x)
-        && lhs.y.epsilonEqual(rhs.y)
-        && lhs.width.epsilonEqual(rhs.width)
-        && lhs.height.epsilonEqual(rhs.height)
+    return lhs.x == rhs.x
+        && lhs.y == rhs.y
+        && lhs.width == rhs.width
+        && lhs.height  == rhs.height
+}
+
+// MARK: - AlmostEquatable
+
+extension Rectangle: AlmostEquatable {
+    
+    public func almostEqual(rhs: Rectangle, tolerance: Float = FloatEpsilon) -> Bool {
+        
+        return lhs.x.almostEqual(rhs.x)
+            && lhs.y.almostEqual(rhs.y)
+            && lhs.width.almostEqual(rhs.width)
+            && lhs.height.almostEqual(rhs.height)
+    }
 }
 
 // MARK: - Hashable

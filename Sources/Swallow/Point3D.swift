@@ -6,6 +6,8 @@
 //  Copyright © 2016 PureSwift. All rights reserved.
 //
 
+import Kronos
+
 /**
 Represents a point or a location in the three-dimensional space using the
 Cartesian coordinates `x`, `y`, and `z`. As in a two-dimensional space, the `x` property represents the

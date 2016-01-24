@@ -6,6 +6,8 @@
 //  Copyright © 2016 PureSwift. All rights reserved.
 //
 
+import Kronos
+
 /// Represents a transformation matrix that determines the position and orientation
 /// of a three-dimensional (3D) display object. The matrix can perform transformation functions
 /// including translation (repositioning along the x, y, and z axes), rotation, and scaling (resizing).

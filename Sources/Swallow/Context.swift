@@ -6,6 +6,8 @@
 //  Copyright © 2016 PureSwift. All rights reserved.
 //
 
+import Kronos
+
 /// Manages the state information, commands, and resources needed to draw using
 /// OpenGL. All OpenGL commands are executed in relation to a context. `Context` wraps the native
 /// context and provides additional functionality.
@@ -42,6 +44,8 @@ public final class Context {
     // MARK: - Methods
     
     public func clear(red red: Float, green: Float, blue: Float, alpha: Float, depth: Float = 1, stencil: UInt = 0, mask: [ClearMask] = []) {
+        
+        Capability.
         
         let scissorEnabled = glIsEnabled(GLenum(GL_SCISSOR_TEST))
         

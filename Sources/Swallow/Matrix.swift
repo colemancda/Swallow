@@ -6,6 +6,8 @@
 //  Copyright © 2016 PureSwift. All rights reserved.
 //
 
+import Kronos
+
 /// Describes an affine, 2D transformation Matrix. 
 /// It provides methods to manipulate the matrix in convenient ways, and can be used to transform points.
 public struct Matrix {

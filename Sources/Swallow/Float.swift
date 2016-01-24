@@ -6,14 +6,15 @@
 //  Copyright © 2016 PureSwift. All rights reserved.
 //
 
-public extension Float {
+extension Float: AlmostEquatable {
     
-    static var epsilon: Float { return 0.0001 }
-    
-    func epsilonEqual(rhs: Float) -> Bool {
+    public func almostEqual(rhs: Float, tolerance: Float = FloatEpsilon) -> Bool {
         
-        return fabsf(self - rhs) < Float.epsilon
+        return fabsf(self - rhs) < tolerance
     }
+}
+
+public extension Float {
     
     var square: Float {
         
